@@ -28,6 +28,7 @@ public class BollaBall {
         }
     }
 
+
     public int getNivel(){
         return this.nivel;
     }
