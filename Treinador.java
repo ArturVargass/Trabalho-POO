@@ -10,6 +10,13 @@ public class Treinador {
     
     private String nickname;
 
+    public Treinador(String nickname){
+        this.nickname = nickname;
+        this.bollasPossuidas = new ArrayList<>();
+        this.vitorias = 0;
+        this.derrotas = 0;
+    }
+
 
     private void capturarBolla(Bolla b, BollaBall bb){
         //mostrar na interface a seleção das BollaBalls disponíveis para capturar o BollaBall
