@@ -2,6 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class MyFrame extends JFrame implements ActionListener {
 
@@ -15,7 +19,7 @@ public class MyFrame extends JFrame implements ActionListener {
 
     public onNameSaved listener;
 
-    public MyFrame(onNameSaved listener) {
+    public MyFrame() {
         this.listener = listener;
         this.setTitle("Dragon Bolla");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -25,28 +29,43 @@ public class MyFrame extends JFrame implements ActionListener {
         BackgroundPanel backgroundPanel = new BackgroundPanel();
         backgroundPanel.setLayout(null);
 
-        ImageIcon treinadorImg = new ImageIcon("src/imagens/treinador.png");
-        JLabel label = new JLabel();
-        label.setText("Digite seu nome:");
-        label.setIcon(treinadorImg);
-        label.setBounds(200, 165, 185, 325);
-        label.setHorizontalTextPosition(JLabel.CENTER);
-        label.setVerticalTextPosition(JLabel.BOTTOM);
-        label.setFont(new Font("Roboto Mono", Font.PLAIN, 21));
+        ImageIcon treinadorImg = new ImageIcon(getClass().getResource("/imagens/treinador.png"));
+        try {
+            InputStream fontStream = getClass().getResourceAsStream("/Minecraftia.ttf");
+            if (fontStream == null) {
+                throw new IOException("Fonte não encontrada");
+            }
+            Font minecraftiaFont = Font.createFont(Font.TRUETYPE_FONT, fontStream).deriveFont(20f);
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(minecraftiaFont);
+            JLabel label = new JLabel();
+            label.setText("Digite seu nome:");
+            label.setIcon(treinadorImg);
+            label.setBounds(195, 114, 185, 425);
+            label.setHorizontalTextPosition(JLabel.CENTER);
+            label.setVerticalTextPosition(JLabel.BOTTOM);
+            label.setFont(minecraftiaFont);
 
-        nameInput.setBounds(210, 500, 155, 30);
-        nameInput.setFont(new Font("Roboto Mono", Font.PLAIN, 16));
+            nameInput.setBounds(210, 500, 155, 30);
+            nameInput.setFont(minecraftiaFont);
 
-        enterButton.setBounds(245, 550, 80, 50);
-        enterButton.addActionListener(this);
-        enterButton.setText("Entrar");
-        enterButton.setFocusable(false);
-        enterButton.setFont(new Font("Roboto Mono", Font.PLAIN, 16));
-        enterButton.setBackground(Color.LIGHT_GRAY);
+            enterButton.setBounds(225, 550, 120, 50);
+            enterButton.addActionListener(this);
+            enterButton.setText("Entrar");
+            enterButton.setFocusable(false);
+            enterButton.setFont(minecraftiaFont);
+            enterButton.setBackground(Color.LIGHT_GRAY);
+            backgroundPanel.add(label);
+            backgroundPanel.add(nameInput);
+            backgroundPanel.add(enterButton);
+        } catch (FontFormatException | IOException e) {
+            e.printStackTrace();
+        }
 
-        backgroundPanel.add(label);
-        backgroundPanel.add(nameInput);
-        backgroundPanel.add(enterButton);
+
+
+
+
 
         this.add(backgroundPanel);
         this.setVisible(true);
@@ -54,25 +73,35 @@ public class MyFrame extends JFrame implements ActionListener {
 
 
     class BackgroundPanel extends JPanel {
-        private Image backgroundImage = new ImageIcon("src/imagens/login-bg.jpg").getImage();
+
+        private Image backgroundImage = new ImageIcon("imagens/login-bg.jpg").getImage();
 
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
             g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
+            Graphics2D g2d = (Graphics2D) g;
+            g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+
         }
     }
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == enterButton) {
             this.userName = nameInput.getText();
-            if(listener != null){
-                listener.onButtonClick(userName);
-            }
             if (!userName.isEmpty()){
+                salvarCSV(userName, 0,0);
                 this.dispose();
             }
+        }
+    }
 
+    public void salvarCSV(String nome, int vitorias, int derrotas) {
+        try (FileWriter writer = new FileWriter("treinadores.csv", true)) {
+            writer.append(nome).append(',').append(String.valueOf(vitorias)).append(',').append(String.valueOf(derrotas)).append('\n');
+            System.out.println("Dados salvos no CSV");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
