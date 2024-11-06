@@ -1,7 +1,5 @@
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 
 public class Main{
     public static void main(String[] args) {
@@ -19,7 +17,5 @@ public class Main{
 
             myFrame.show();
         }
-
-        TelaCapturaBolla tellaBolla = new TelaCapturaBolla();
     }
 }

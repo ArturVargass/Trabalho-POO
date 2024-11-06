@@ -10,7 +10,6 @@ public class TelaMenu extends JFrame implements ActionListener {
     private  JButton botaoBatalhar = new JButton();
     private String userName;
 
-
     public TelaMenu() {
         this.setTitle("Dragon Bolla");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
