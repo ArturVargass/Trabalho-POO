@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 
-public class Treinador {
 
+public class Treinador {
     private ArrayList<Bolla> bollasPossuidas;
     private ArrayList<BollaBall> bollasBallPossuidas;
 
     private int vitorias;
     private int derrotas;
-    
+
     private String nickname;
 
     public Treinador(String nickname){
@@ -70,3 +70,4 @@ public class Treinador {
         this.nickname = nickname;
     }
 }
+

@@ -1,21 +1,42 @@
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class Main {
 
-public class Main{
-    public static void main(String[] args) {
-        System.out.println("Hello world!");
+    public abstract class Bolla {
 
-        try {
-            FileReader reader = new FileReader("treinadores.csv");
-            System.out.println("existe");
-            TelaMenu telaMenu = new TelaMenu();
-            telaMenu.show();
 
-        } catch (FileNotFoundException e) {
-            System.out.println("não existe");
-            MyFrame myFrame = new MyFrame();
+        private float hp;
+        private float poder;
+        private int nivel;
+        private Treinador treinador;
 
-            myFrame.show();
+        public Bolla(int nivel, float hp, float poder){
+            this.nivel = nivel;
+            this.hp = hp;
+            this.poder = poder;
         }
+
+        public abstract void atacar(Bolla b);
+
+        public abstract void defender(float danoRecebido);
+
+        public float getHp() {
+            return hp;
+        }
+
+        public int getNivel() {
+            return nivel;
+        }
+
+        public float getPoder() {
+            return poder;
+        }
+
+        public Treinador getTreinador() {
+            return treinador;
+        }
+
     }
+
+
 }

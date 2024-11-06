@@ -1,5 +1,10 @@
+
+
 public abstract class Bolla {
 
+    public void setHp(float hp) {
+        this.hp = hp;
+    }
 
     private float hp;
     private float poder;
@@ -33,3 +38,5 @@ public abstract class Bolla {
     }
 
 }
+
+
