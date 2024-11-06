@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Random;
 
 public class ProcurandoBolla extends JFrame {
 
@@ -47,11 +48,17 @@ public class ProcurandoBolla extends JFrame {
 
         this.add(backgroundPanel);
         this.setVisible(true);
+
+        contagem();
+
     }
+
+
 
 
     class BackgroundPanel extends JPanel {
         private Image backgroundImage = new ImageIcon("imagens/procurandobolla-bg.png").getImage();
+
 
         @Override
         protected void paintComponent(Graphics g) {
@@ -60,11 +67,35 @@ public class ProcurandoBolla extends JFrame {
             Graphics2D g2d = (Graphics2D) g;
             g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
-            // Desenhe seu texto aqui
+
         }
     }
 
 
 
+    private void contagem(){
+
+
+
+        try {
+            Random r = new Random();
+            int numero = (r.nextInt(8) + 3)*1000;
+            System.out.println(numero);
+            Thread.sleep(numero);
+            System.out.println("teste finalizado");
+            //coloque o código que abrirá a tela de luta contra a bolla
+
+            //AQUI
+
+            //KAKAKAK
+
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+
+
+
+    }
 
 }
