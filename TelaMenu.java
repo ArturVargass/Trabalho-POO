@@ -17,6 +17,8 @@
             this.setSize(600, 800);
             this.setResizable(false);
 
+            this.setLocationRelativeTo(null);
+
             BackgroundPanel backgroundPanel = new BackgroundPanel();
             backgroundPanel.setLayout(null);
 
