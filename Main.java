@@ -19,5 +19,7 @@ public class Main{
 
             myFrame.show();
         }
+
+        TelaCapturaBolla tellaBolla = new TelaCapturaBolla();
     }
 }
