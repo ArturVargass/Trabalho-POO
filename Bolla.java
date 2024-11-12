@@ -9,12 +9,13 @@ public abstract class Bolla {
     private float hp;
     private float poder;
     private int nivel;
-    private Treinador treinador;
+    private String imagePath;
 
-    public Bolla(int nivel, float hp, float poder){
+    public Bolla(int nivel, float hp, float poder, String imagePath){
         this.nivel = nivel;
         this.hp = hp;
         this.poder = poder;
+        this.imagePath = imagePath;
     }
 
     public abstract void atacar(Bolla b);
@@ -33,10 +34,10 @@ public abstract class Bolla {
         return poder;
     }
 
-    public Treinador getTreinador() {
-        return treinador;
-    }
 
+    public String getImagePath() {
+        return imagePath;
+    }
 }
 
 

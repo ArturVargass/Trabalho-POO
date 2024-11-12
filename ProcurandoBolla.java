@@ -1,7 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
-
+import java.util.List;
+import java.util.Arrays;
 import java.io.File;
 import java.io.IOException;
 
@@ -66,9 +67,11 @@ public class ProcurandoBolla extends JFrame {
 
     private void contagem() {
         Random r = new Random();
+        List<Bolla> bollas = Arrays.asList(new Datna(), new Glaufora(), new Lavadon(), new Varuk());
         int numero = (r.nextInt(8) + 3) * 1000;
         Timer timer = new Timer(numero, e -> {
-            new TelaCapturaBolla();
+            Bolla bollaSorteada = bollas.get(r.nextInt(bollas.size()));
+            new TelaCapturaBolla(bollaSorteada);
             dispose();
         });
         timer.setRepeats(false);

@@ -1,7 +1,7 @@
 public class Datna extends Bolla{
 
-    public Datna(int nivel, float hp, float poder) {
-        super(nivel, hp, poder);
+    public Datna() {
+        super(1, 10, 3, "/imagens/Datna.png");
     }
 
 

@@ -9,7 +9,7 @@ public class TelaCapturaBolla extends JFrame implements ActionListener {
     private  JButton bollaBall = new JButton();
 
 
-    public TelaCapturaBolla() {
+    public TelaCapturaBolla(Bolla bollaSorteada) {
         this.setTitle("Dragon Bolla");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(600, 800);
@@ -21,7 +21,7 @@ public class TelaCapturaBolla extends JFrame implements ActionListener {
         BackgroundPanel backgroundPanel = new BackgroundPanel();
         backgroundPanel.setLayout(null);
 
-        ImageIcon bollaImg = new ImageIcon(getClass().getResource("/imagens/Glaufora.png"));
+        ImageIcon bollaImg = new ImageIcon(getClass().getResource(bollaSorteada.getImagePath()));
 
         JLabel bollaIcone =  new JLabel();
         bollaIcone.setIcon(bollaImg);

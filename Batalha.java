@@ -13,10 +13,10 @@ public class Batalha {
     public void iniciarBatalha(){
 
         Round round = new Round();
-
-        while(checarBatalha() == null){
-
-        }
+//
+//        while(checarBatalha() == null){
+//
+//        }
 
     }
 
@@ -31,25 +31,25 @@ public class Batalha {
         perdedor.setDerrotas(d + 1);
     }
 
-    public Bolla checarBatalha(){
-
-        if(this.b1.getHp() == 0 || this.b1.getHp() < 0){
-
-            finalizarBatalha();
-            setVitoria(b2.getTreinador(), b1.getTreinador());
-            return b2;
-
-        }else if(this.b2.getHp() == 0 || this.b2.getHp() < 0){
-
-            finalizarBatalha();
-            setVitoria(b1.getTreinador(), b2.getTreinador());
-            return b1;
-
-        }
-
-        return null;
-
-    }
+//    public Bolla checarBatalha(){
+//
+//        if(this.b1.getHp() == 0 || this.b1.getHp() < 0){
+//
+//            finalizarBatalha();
+//            setVitoria(b2.getTreinador(), b1.getTreinador());
+//            return b2;
+//
+//        }else if(this.b2.getHp() == 0 || this.b2.getHp() < 0){
+//
+//            finalizarBatalha();
+//            setVitoria(b1.getTreinador(), b2.getTreinador());
+//            return b1;
+//
+//        }
+//
+//        return null;
+//
+//    }
 
 
 
