@@ -2,22 +2,36 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 
 public class TelaCapturaBolla extends JFrame implements ActionListener {
 
     private  JButton bollaBallRara = new JButton();
     private  JButton bollaBallComum = new JButton();
-
+    private Treinador tr;
+    private Bolla bollaSorteada;
 
     public TelaCapturaBolla(Bolla bollaSorteada) {
+        this.bollaSorteada = bollaSorteada;
+
+        try {
+            Treinador t = new Treinador("");
+            t = new SalveTreinador(t).carregarTreinador();
+            System.out.println(t.getNome());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+
         this.setTitle("Dragon Bolla");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(600, 800);
         this.setResizable(false);
 
         this.setLocationRelativeTo(null);
-
 
         BackgroundPanel backgroundPanel = new BackgroundPanel();
         backgroundPanel.setLayout(null);
@@ -65,7 +79,23 @@ public class TelaCapturaBolla extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == bollaBallRara) {
-            System.out.println("botao batalha");
+
+
+            //capturarBolla(bollaSorteada, new BollaBall(1));
+
+            /*System.out.println(tr.getNome());
+            System.out.println(tr.getBollasPossuidas());
+            System.out.println(tr.getVitorias());
+            System.out.println(tr.getDerrotas());
+            System.out.println(tr.getBollaBallsComum());
+            System.out.println(tr.getBollaBallsRara());*/
+
+        }else if(e.getSource() == bollaBallComum){
+
+
+            //capturarBolla(bollaSorteada, new BollaBall(2));
+
+
         }
     }
 
@@ -81,6 +111,13 @@ public class TelaCapturaBolla extends JFrame implements ActionListener {
             g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
         }
+    }
+
+    public void capturarBolla(Bolla b, BollaBall bb){
+
+        System.out.println(bb.capturar(tr, b));
+
+
     }
 }
 

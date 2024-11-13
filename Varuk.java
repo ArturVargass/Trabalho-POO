@@ -1,4 +1,6 @@
-public class Varuk extends Bolla{
+import java.io.Serializable;
+
+public class Varuk extends Bolla implements Serializable {
 
 
     public Varuk() {

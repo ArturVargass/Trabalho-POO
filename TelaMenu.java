@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 
 public class TelaMenu extends JFrame implements ActionListener {
@@ -43,8 +44,8 @@ public class TelaMenu extends JFrame implements ActionListener {
 
         this.add(backgroundPanel);
         this.setVisible(true);
-    }
 
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -59,7 +60,6 @@ public class TelaMenu extends JFrame implements ActionListener {
     }
 
     class BackgroundPanel extends JPanel {
-
         private Image backgroundImage = new ImageIcon(getClass().getResource("/imagens/menu2-bg.png")).getImage();
 
         @Override

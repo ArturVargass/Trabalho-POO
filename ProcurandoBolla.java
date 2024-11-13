@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Arrays;
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class ProcurandoBolla extends JFrame {
 
@@ -68,12 +69,12 @@ public class ProcurandoBolla extends JFrame {
 
     private void contagem() {
         Random r = new Random();
-        final Bolla[] b = new Bolla[1];
+         AtomicReference<Bolla> b = new AtomicReference<>();
         List<Bolla> bollas = Arrays.asList(new Datna(), new Glaufora(), new Lavadon(), new Varuk());
         int numero = (r.nextInt(8) + 3) * 1000;
         Timer timer = new Timer(numero, e -> {
-            b[0] = bollas.get(r.nextInt(bollas.size()));
-            new TelaCapturaBolla(b[0]);
+            b.set(bollas.get(r.nextInt(bollas.size())));
+            new TelaCapturaBolla(b.get());
             dispose();
         });
         timer.setRepeats(false);

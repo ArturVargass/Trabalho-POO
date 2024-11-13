@@ -1,4 +1,6 @@
-public class Lavadon extends Bolla{
+import java.io.Serializable;
+
+public class Lavadon extends Bolla implements Serializable {
 
 
     public Lavadon() {

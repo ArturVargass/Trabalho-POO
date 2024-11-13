@@ -1,4 +1,6 @@
-public class Datna extends Bolla{
+import java.io.Serializable;
+
+public class Datna extends Bolla implements Serializable {
 
     public Datna() {
         super(1, 10, 3, "/imagens/Datna.png");

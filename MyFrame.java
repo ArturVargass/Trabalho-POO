@@ -12,19 +12,12 @@ public class MyFrame extends JFrame implements ActionListener {
     private JTextField nameInput = new JTextField();
     private String userName;
 
-    public interface onNameSaved{
-        void onButtonClick (String nome);
-    }
-
-    public onNameSaved listener;
 
     public MyFrame() {
-        this.listener = listener;
         this.setTitle("Dragon Bolla");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(600, 800);
         this.setResizable(false);
-
         this.setLocationRelativeTo(null);
 
         BackgroundPanel backgroundPanel = new BackgroundPanel();
@@ -59,17 +52,15 @@ public class MyFrame extends JFrame implements ActionListener {
             backgroundPanel.add(label);
             backgroundPanel.add(nameInput);
             backgroundPanel.add(enterButton);
+
+
         } catch (FontFormatException | IOException e) {
             e.printStackTrace();
         }
 
-
-
-
-
-
         this.add(backgroundPanel);
         this.setVisible(true);
+
     }
 
 
@@ -93,7 +84,7 @@ public class MyFrame extends JFrame implements ActionListener {
             if (!userName.isEmpty()){
                 Treinador treinador = new Treinador(userName);
                 try {
-                    salvarCSV(treinador);
+                    new SalveTreinador(treinador).salvarTreinador();
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -102,8 +93,23 @@ public class MyFrame extends JFrame implements ActionListener {
         }
     }
 
-    public void salvarCSV(Treinador treinador) throws IOException {
-        SalveTreinador s = new SalveTreinador(treinador);
-        s.salvarTreinador(treinador);
+    public Treinador carregarTreinador(){
+
+        Treinador t = null;
+
+        SalveTreinador s = new SalveTreinador(t);
+
+        try {
+            t = s.carregarTreinador();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+
+
+        return t;
     }
+
 }

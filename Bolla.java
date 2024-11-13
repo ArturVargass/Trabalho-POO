@@ -1,6 +1,6 @@
+import java.io.Serializable;
 
-
-public abstract class Bolla {
+public abstract class Bolla implements Serializable {
 
     public void setHp(float hp) {
         this.hp = hp;

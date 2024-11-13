@@ -1,3 +1,5 @@
+import org.jetbrains.annotations.Nullable;
+
 import java.io.*;
 
 
@@ -5,19 +7,19 @@ class SalveTreinador implements Serializable {
 
     Treinador t;
 
-    public SalveTreinador(Treinador t) {
+    public SalveTreinador(@Nullable Treinador t) {
         this.t=t;
     }
 
-    public void salvarTreinador(Treinador p) throws IOException {
+    public void salvarTreinador() throws IOException {
 
         FileOutputStream fos = new FileOutputStream("treinador.txt");
         ObjectOutputStream os = new ObjectOutputStream(fos);
-        os.writeObject(p);
+        os.writeObject(t);
         os.close();
         fos.close();
     }
-    public Treinador carregarPessoa() throws IOException,
+    public Treinador carregarTreinador() throws IOException,
         ClassNotFoundException {
 
             FileInputStream fis = new FileInputStream("treinador.txt");
@@ -26,6 +28,7 @@ class SalveTreinador implements Serializable {
             Treinador p = (Treinador) is.readObject();
             is.close();
             fis.close();
+
         return p;
     }
 

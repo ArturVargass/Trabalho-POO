@@ -6,9 +6,8 @@ import java.io.IOException;
 public class Main{
     public static void main(String[] args) {
         System.out.println("Hello world!");
-
         try {
-            FileReader reader = new FileReader("treinadores.csv");
+            FileReader reader = new FileReader("treinador.txt");
             System.out.println("existe");
             TelaMenu telaMenu = new TelaMenu();
             telaMenu.show();
@@ -16,9 +15,7 @@ public class Main{
         } catch (FileNotFoundException e) {
             System.out.println("não existe");
             MyFrame myFrame = new MyFrame();
-
             myFrame.show();
         }
-
     }
 }
