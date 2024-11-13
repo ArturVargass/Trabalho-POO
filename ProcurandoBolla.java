@@ -68,11 +68,12 @@ public class ProcurandoBolla extends JFrame {
 
     private void contagem() {
         Random r = new Random();
+        final Bolla[] b = new Bolla[1];
         List<Bolla> bollas = Arrays.asList(new Datna(), new Glaufora(), new Lavadon(), new Varuk());
         int numero = (r.nextInt(8) + 3) * 1000;
         Timer timer = new Timer(numero, e -> {
-            Bolla bollaSorteada = bollas.get(r.nextInt(bollas.size()));
-            new TelaCapturaBolla(bollaSorteada);
+            b[0] = bollas.get(r.nextInt(bollas.size()));
+            new TelaCapturaBolla(b[0]);
             dispose();
         });
         timer.setRepeats(false);
