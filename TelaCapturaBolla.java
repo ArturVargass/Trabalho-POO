@@ -6,7 +6,8 @@ import java.awt.event.ActionListener;
 
 public class TelaCapturaBolla extends JFrame implements ActionListener {
 
-    private  JButton bollaBall = new JButton();
+    private  JButton bollaBallRara = new JButton();
+    private  JButton bollaBallComum = new JButton();
 
 
     public TelaCapturaBolla(Bolla bollaSorteada) {
@@ -22,6 +23,13 @@ public class TelaCapturaBolla extends JFrame implements ActionListener {
         backgroundPanel.setLayout(null);
 
         ImageIcon bollaImg = new ImageIcon(getClass().getResource(bollaSorteada.getImagePath()));
+        ImageIcon bollaBallRaraImg = new ImageIcon(getClass().getResource("/imagens/bollaBallRara.png"));
+        ImageIcon bollaBallComumImg = new ImageIcon(getClass().getResource("/imagens/bollaBallComum.png"));
+
+        JLabel encontrouLabel = new JLabel("Você encontrou " + bollaSorteada.getClass().getSimpleName());
+        encontrouLabel.setFont(new Font("Roboto Mono", Font.BOLD, 24));
+        encontrouLabel.setForeground(Color.WHITE);
+        encontrouLabel.setBounds(162, 290, 300, 30);
 
         JLabel bollaIcone =  new JLabel();
         bollaIcone.setIcon(bollaImg);
@@ -29,16 +37,23 @@ public class TelaCapturaBolla extends JFrame implements ActionListener {
         bollaIcone.setHorizontalTextPosition(JLabel.CENTER);
         bollaIcone.setVerticalTextPosition(JLabel.BOTTOM);
 
-        bollaBall.setBounds(245, 620, 100, 50);
-        bollaBall.setText("BollaBall");
-        bollaBall.setFocusable(false);
-        bollaBall.setFont(new Font("Roboto Mono", Font.PLAIN, 16));
-        bollaBall.setBackground(Color.LIGHT_GRAY);
-        bollaBall.addActionListener(this);
+        bollaBallRara.setBounds(325, 620, 75, 75);
+        bollaBallRara.setFocusable(false);
+        bollaBallRara.setBackground(Color.LIGHT_GRAY);
+        bollaBallRara.addActionListener(this);
+        bollaBallRara.setIcon(bollaBallRaraImg);
+
+        bollaBallComum.setBounds(185, 620, 75, 75);
+        bollaBallComum.setFocusable(false);
+        bollaBallComum.setBackground(Color.LIGHT_GRAY);
+        bollaBallComum.addActionListener(this);
+        bollaBallComum.setIcon(bollaBallComumImg);
 
 
         backgroundPanel.add(bollaIcone);
-        backgroundPanel.add(bollaBall);
+        backgroundPanel.add(bollaBallRara);
+        backgroundPanel.add(bollaBallComum);
+        backgroundPanel.add(encontrouLabel);
 
         this.add(backgroundPanel);
         this.setVisible(true);
@@ -47,7 +62,7 @@ public class TelaCapturaBolla extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == bollaBall) {
+        if (e.getSource() == bollaBallRara) {
             System.out.println("botao batalha");
         }
     }

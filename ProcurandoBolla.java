@@ -36,6 +36,7 @@ public class ProcurandoBolla extends JFrame {
 
 
         ImageIcon treinadorImg = new ImageIcon("src/imagens/treinador.png");
+
         label.setText("");
         label.setIcon(treinadorImg);
         label.setFont(minecraftiaFont);

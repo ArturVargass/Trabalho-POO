@@ -21,15 +21,18 @@ public class TelaMenu extends JFrame implements ActionListener {
         BackgroundPanel backgroundPanel = new BackgroundPanel();
         backgroundPanel.setLayout(null);
 
-        botaoBatalhar.setBounds(205, 550, 200, 50);
-        botaoBatalhar.setText("Batalhar");
+        ImageIcon procurarBollaImg = new ImageIcon(getClass().getResource("/imagens/ProcurarBolla1.png"));
+        ImageIcon botaoBatalhaImg = new ImageIcon(getClass().getResource("/imagens/BotaoBatalha.png"));
+
+        botaoBatalhar.setBounds(275, 620, 147, 147);
+        botaoBatalhar.setIcon(botaoBatalhaImg);
         botaoBatalhar.setFocusable(false);
         botaoBatalhar.setFont(new Font("Roboto Mono", Font.PLAIN, 16));
         botaoBatalhar.setBackground(Color.LIGHT_GRAY);
         botaoBatalhar.addActionListener(this);
 
-        botaoProcuraBolla.setBounds(205, 630, 200, 50);
-        botaoProcuraBolla.setText("Procurar Bolla");
+        botaoProcuraBolla.setBounds(42, 375, 233, 223);
+        botaoProcuraBolla.setIcon(procurarBollaImg);
         botaoProcuraBolla.setFocusable(false);
         botaoProcuraBolla.setFont(new Font("Roboto Mono", Font.PLAIN, 16));
         botaoProcuraBolla.setBackground(Color.LIGHT_GRAY);
@@ -57,7 +60,7 @@ public class TelaMenu extends JFrame implements ActionListener {
 
     class BackgroundPanel extends JPanel {
 
-        private Image backgroundImage = new ImageIcon(getClass().getResource("/imagens/menu-bg.png")).getImage();
+        private Image backgroundImage = new ImageIcon(getClass().getResource("/imagens/menu1-bg.png")).getImage();
 
         @Override
         protected void paintComponent(Graphics g) {

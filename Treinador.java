@@ -3,7 +3,8 @@ import java.util.ArrayList;
 
 public class Treinador {
     private ArrayList<Bolla> bollasPossuidas;
-    private ArrayList<BollaBall> bollasBallPossuidas;
+    private int bollaBallsComum = 6;
+    private int bollaBallsRara = 2;
 
     private int vitorias;
     private int derrotas;
@@ -38,12 +39,17 @@ public class Treinador {
         return bollasPossuidas;
     }
 
-    private ArrayList<BollaBall> checarBollaBallsPossuidas(){
-        return bollasBallPossuidas;
-    }
 
     private void setNick(String novoNick){
         setNickname(novoNick);
+    }
+
+    public int getBollaBallsComum() {
+        return bollaBallsComum;
+    }
+
+    public int getBollaBallsRara() {
+        return bollaBallsRara;
     }
 
     public int getDerrotas() {
