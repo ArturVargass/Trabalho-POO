@@ -91,20 +91,20 @@ public class MyFrame extends JFrame implements ActionListener {
         if (e.getSource() == enterButton) {
             this.userName = nameInput.getText();
             if (!userName.isEmpty()){
-                salvarCSV(userName, 0,0);
+                Treinador treinador = new Treinador(userName);
+                salvarCSV(treinador);
                 this.dispose();
             }
         }
     }
 
-    public void salvarCSV(String nome, int vitorias, int derrotas) {
+    public void salvarCSV(Treinador treinador) {
         try (FileWriter writer = new FileWriter("treinadores.csv", true)) {
-            writer.append(nome).append(',').append(String.valueOf(vitorias)).append(',').append(String.valueOf(derrotas)).append('\n');
+            writer.append(treinador);
             System.out.println("Dados salvos no CSV");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 
 }

@@ -39,12 +39,14 @@ public class TelaCapturaBolla extends JFrame implements ActionListener {
 
         bollaBallRara.setBounds(325, 620, 75, 75);
         bollaBallRara.setFocusable(false);
+        bollaBallRara.setContentAreaFilled(false);
         bollaBallRara.setBackground(Color.LIGHT_GRAY);
         bollaBallRara.addActionListener(this);
         bollaBallRara.setIcon(bollaBallRaraImg);
 
         bollaBallComum.setBounds(185, 620, 75, 75);
         bollaBallComum.setFocusable(false);
+        bollaBallComum.setContentAreaFilled(false);
         bollaBallComum.setBackground(Color.LIGHT_GRAY);
         bollaBallComum.addActionListener(this);
         bollaBallComum.setIcon(bollaBallComumImg);

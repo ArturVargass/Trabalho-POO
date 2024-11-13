@@ -1,18 +1,17 @@
 import java.util.ArrayList;
+import java.io.Serializable;
 
-
-public class Treinador {
+public class Treinador implements Serializable{
+    private String nome;
     private ArrayList<Bolla> bollasPossuidas;
     private int bollaBallsComum = 6;
     private int bollaBallsRara = 2;
-
     private int vitorias;
     private int derrotas;
 
-    private String nickname;
 
     public Treinador(String nickname){
-        this.nickname = nickname;
+        this.nome = nome;
         this.bollasPossuidas = new ArrayList<>();
         this.vitorias = 0;
         this.derrotas = 0;
@@ -40,10 +39,6 @@ public class Treinador {
     }
 
 
-    private void setNick(String novoNick){
-        setNickname(novoNick);
-    }
-
     public int getBollaBallsComum() {
         return bollaBallsComum;
     }
@@ -51,6 +46,11 @@ public class Treinador {
     public int getBollaBallsRara() {
         return bollaBallsRara;
     }
+
+    public String getNome() {
+        return nome;
+    }
+    public void setNome(String nome) { this.nome = nome; }
 
     public int getDerrotas() {
         return derrotas;
@@ -68,12 +68,6 @@ public class Treinador {
         this.vitorias = vitorias;
     }
 
-    public String getNickname() {
-        return nickname;
-    }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
 }
 

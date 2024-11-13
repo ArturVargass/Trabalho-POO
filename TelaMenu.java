@@ -60,7 +60,7 @@ public class TelaMenu extends JFrame implements ActionListener {
 
     class BackgroundPanel extends JPanel {
 
-        private Image backgroundImage = new ImageIcon(getClass().getResource("/imagens/menu1-bg.png")).getImage();
+        private Image backgroundImage = new ImageIcon(getClass().getResource("/imagens/menu2-bg.png")).getImage();
 
         @Override
         protected void paintComponent(Graphics g) {
