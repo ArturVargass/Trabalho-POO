@@ -92,19 +92,18 @@ public class MyFrame extends JFrame implements ActionListener {
             this.userName = nameInput.getText();
             if (!userName.isEmpty()){
                 Treinador treinador = new Treinador(userName);
-                salvarCSV(treinador);
+                try {
+                    salvarCSV(treinador);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
                 this.dispose();
             }
         }
     }
 
-    public void salvarCSV(Treinador treinador) {
-        try (FileWriter writer = new FileWriter("treinadores.csv", true)) {
-            writer.append(treinador);
-            System.out.println("Dados salvos no CSV");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void salvarCSV(Treinador treinador) throws IOException {
+        SalveTreinador s = new SalveTreinador(treinador);
+        s.salvarTreinador(treinador);
     }
-
 }
