@@ -22,7 +22,7 @@ public class Main {
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-
+        
 //        TelaBatalha telaBatalha = new TelaBatalha();
     }
 }

@@ -20,17 +20,20 @@ public class TelaEscolhaBolla extends JFrame {
         this.setSize(600, 800);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+
         System.out.println(bollas.get(0).getImagePath());
         BackgroundPanel backgroundPanel = new BackgroundPanel();
         backgroundPanel.setLayout(null);
 
-
+        // Inicializar a imagem da Bolla
         bollaLabel = new JLabel();
-        bollaLabel.setBounds(200, 300, 200, 200);
+        bollaLabel.setBounds(195, 114, 185, 425);
+        bollaLabel.setHorizontalTextPosition(JLabel.CENTER);
+        bollaLabel.setVerticalTextPosition(JLabel.BOTTOM);
         updateBollaImage(); // Exibe a imagem da primeira Bolla
         backgroundPanel.add(bollaLabel);
 
-        // botao de seta para a direita (Próxima Bolla)
+        // Botão de seta para a direita (Próxima Bolla)
         JButton nextButton = new JButton(">");
         nextButton.setBounds(450, 350, 50, 50);
         nextButton.setFont(new Font("Arial", Font.PLAIN, 24));
@@ -38,7 +41,6 @@ public class TelaEscolhaBolla extends JFrame {
         nextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // aavancar para o proximo item na lista
                 if (bollaIndex < bollas.size() - 1) {
                     bollaIndex++;
                     updateBollaImage();
@@ -46,7 +48,7 @@ public class TelaEscolhaBolla extends JFrame {
             }
         });
 
-
+        // Botão de seta para a esquerda (Bolla Anterior)
         JButton prevButton = new JButton("<");
         prevButton.setBounds(100, 350, 50, 50);
         prevButton.setFont(new Font("Arial", Font.PLAIN, 24));
@@ -54,7 +56,6 @@ public class TelaEscolhaBolla extends JFrame {
         prevButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 if (bollaIndex > 0) {
                     bollaIndex--;
                     updateBollaImage();
@@ -62,19 +63,48 @@ public class TelaEscolhaBolla extends JFrame {
             }
         });
 
+        // Botão para selecionar a Bolla atual
+        JButton selectButton = new JButton("Selecionar Bolla");
+        selectButton.setBounds(200, 600, 200, 50);
+        selectButton.setFont(new Font("Arial", Font.PLAIN, 18));
+        selectButton.setFocusable(false);
+        selectButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Bolla selectedBolla = bollas.get(bollaIndex);
+                JOptionPane.showMessageDialog(null, "Bolla selecionada: " + selectedBolla.getImagePath());
+                // Aqui, você pode adicionar lógica adicional para manipular a seleção
+            }
+        });
+
+        // Adiciona os componentes ao painel de fundo
         backgroundPanel.add(nextButton);
         backgroundPanel.add(prevButton);
+        backgroundPanel.add(selectButton);
 
         this.add(backgroundPanel);
         this.setVisible(true);
     }
 
-
     private void updateBollaImage() {
         if (bollas.size() > 0) {
             Bolla bolla = bollas.get(bollaIndex);
-            ImageIcon bollaImage = new ImageIcon(bolla.getImagePath());
-            bollaLabel.setIcon(bollaImage);
+            String imagePath = bolla.getImagePath().replaceFirst("^/", "");
+
+            System.out.println("Carregando imagem da Bolla: " + imagePath);
+
+            try {
+                ImageIcon bollaImage = new ImageIcon(imagePath);
+                if (bollaImage.getIconWidth() == -1) {
+                    throw new Exception("Imagem não encontrada ou inválida");
+                }
+                bollaLabel.setIcon(bollaImage);
+                bollaLabel.setText(null);
+            } catch (Exception e) {
+                System.err.println("Erro ao carregar imagem da Bolla: " + e.getMessage());
+                bollaLabel.setText("Imagem não encontrada");
+                bollaLabel.setIcon(null);
+            }
         } else {
             bollaLabel.setText("Nenhuma Bolla disponível");
             bollaLabel.setIcon(null);
