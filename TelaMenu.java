@@ -47,8 +47,15 @@ public class TelaMenu extends JFrame implements ActionListener {
         botaoEstatisticas.setBackground(Color.LIGHT_GRAY);
         botaoEstatisticas.addActionListener(this);
 
-        if (this.treinador.getVitorias() >= 0){
-            botaoBoss = new JButton();
+        botaoProcuraBolla.setBounds(42, 375, 233, 223);
+        botaoProcuraBolla.setIcon(procurarBollaImg);
+        botaoProcuraBolla.setFocusable(false);
+        botaoProcuraBolla.setFont(new Font("Roboto Mono", Font.PLAIN, 16));
+        botaoProcuraBolla.setBackground(Color.LIGHT_GRAY);
+        botaoProcuraBolla.addActionListener(this);
+
+        if (this.treinador.getVitorias() >= 3){
+            JButton botaoBoss = new JButton();
             ImageIcon botaoBossImg = new ImageIcon(getClass().getResource("/imagens/botaoBill.png"));
             botaoBoss.setBounds(0, 0, 256, 225);
             botaoBoss.setIcon(botaoBossImg);
@@ -59,24 +66,19 @@ public class TelaMenu extends JFrame implements ActionListener {
             backgroundPanel.add(botaoBoss);
         }
 
+        if (this.treinador.getVitorias() >= 3){
 
-        botaoProcuraBolla.setBounds(42, 375, 233, 223);
-        botaoProcuraBolla.setIcon(procurarBollaImg);
-        botaoProcuraBolla.setFocusable(false);
-        botaoProcuraBolla.setFont(new Font("Roboto Mono", Font.PLAIN, 16));
-        botaoProcuraBolla.setBackground(Color.LIGHT_GRAY);
-        botaoProcuraBolla.addActionListener(this);
+            if(!this.treinador.isZerado()){
+                botaoBoss = new JButton();
+                ImageIcon botaoBossImg = new ImageIcon(getClass().getResource("/imagens/botaoBill.png"));
+                botaoBoss.setBounds(0, 0, 256, 225);
+                botaoBoss.setIcon(botaoBossImg);
+                botaoBoss.setFocusable(false);
+                botaoBoss.setBackground(Color.LIGHT_GRAY);
+                botaoBoss.addActionListener(this);
+                backgroundPanel.add(botaoBoss);
 
-        if (this.treinador.getVitorias() >= 0){
-            JButton botaoBoss = new JButton();
-            ImageIcon botaoBossImg = new ImageIcon(getClass().getResource("/imagens/botaoBill.png"));
-            botaoBoss.setBounds(0, 0, 256, 225);
-            botaoBoss.setIcon(botaoBossImg);
-            botaoBoss.setFocusable(false);
-            botaoBoss.setBackground(Color.LIGHT_GRAY);
-            botaoBoss.addActionListener(this);
-
-            backgroundPanel.add(botaoBoss);
+            }
         }
 
         backgroundPanel.add(botaoEstatisticas);
@@ -134,7 +136,6 @@ public class TelaMenu extends JFrame implements ActionListener {
                 //CODIGO NENHUMA BOLLA POSSUIDO
                 JOptionPane.showMessageDialog(null, "Você não possui nenhum Bolla para batalhar, capture primeiro!", "OH SHIT!", JOptionPane.WARNING_MESSAGE);
 
-
             }else{
 
                 //ABRIR TELA BATALHA
@@ -142,10 +143,7 @@ public class TelaMenu extends JFrame implements ActionListener {
                 this.dispose();
             }
 
-            System.out.println("botao batalha");
-
         }
-
 
         if (e.getSource() == botaoBoss) {
 
@@ -156,12 +154,18 @@ public class TelaMenu extends JFrame implements ActionListener {
 
             }else{
 
-                //ABRIR TELA BATALHA BOSS
+                if(this.treinador.isZerado()){
 
+                    JOptionPane.showMessageDialog(null, "VOCÊ MATOU O BILLLLL", "NICE", JOptionPane.WARNING_MESSAGE);
+
+                }else{
+
+                    TelaEscolhaBollaBoss t = new TelaEscolhaBollaBoss(this.treinador);
+                    t.show();
+                    dispose();
+
+                }
             }
-
-            System.out.println("botao batalha");
-
         }
 
         if (e.getSource() == botaoEstatisticas) {

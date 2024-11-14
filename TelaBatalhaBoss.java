@@ -3,15 +3,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
 
 public class TelaBatalhaBoss extends JFrame implements ActionListener, Batalha.BatalhaListener {
 
     private Bolla bollaSelecionada;
-    private Bolla inimigo;
+    private Bill inimigo;
     JLabel ataqueBolla;
     JLabel ataqueInimigo;
     public TelaBatalhaBoss(Treinador treinador, Bolla bollaSelecionada) {
@@ -63,23 +62,27 @@ public class TelaBatalhaBoss extends JFrame implements ActionListener, Batalha.B
 
             JLabel bollaSelecionadaLabel = new JLabel();
             bollaSelecionadaLabel.setIcon(new ImageIcon(invertImage(bollaSelecionadaImg.getImage())));
-            bollaSelecionadaLabel.setBounds(70, 401, 205, 225);
+            bollaSelecionadaLabel.setBounds(70, 410, 205, 225);
             bollaSelecionadaLabel.setHorizontalTextPosition(JLabel.CENTER);
             bollaSelecionadaLabel.setVerticalTextPosition(JLabel.BOTTOM);
 
-            ArrayList<Bolla> bollaList = new ArrayList<>();
+            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("boss.txt"))) {
+                inimigo = (Bill) new SalveBoss(null).carregarBoss();
+            } catch (FileNotFoundException e) {
 
-            bollaList.add(new Smilex());
-            bollaList.add(new Leptos());
+                inimigo = new Bill();
+                new SalveBoss(inimigo).salvarBoss();
 
-            Random random = new Random();
-            Bolla bollaSorteada = bollaList.get(random.nextInt(bollaList.size()));
-            this.inimigo = bollaSorteada;
-            bollaAdversariaImg = new ImageIcon(getClass().getResource(bollaSorteada.getImagePath()));
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+
+            bollaAdversariaImg = new ImageIcon(inimigo.getImagePath());
 
             JLabel bollaAdversaria = new JLabel();
             bollaAdversaria.setIcon(bollaAdversariaImg);
-            bollaAdversaria.setBounds(360, 451, 150, 150);
+            bollaAdversaria.setBounds(340, 425, 190, 180);
             bollaAdversaria.setHorizontalTextPosition(JLabel.CENTER);
             bollaAdversaria.setVerticalTextPosition(JLabel.BOTTOM);
 
@@ -124,6 +127,8 @@ public class TelaBatalhaBoss extends JFrame implements ActionListener, Batalha.B
     @Override
     public void onBatalhaFinalizada() {
 
+
+
         try {
             Treinador tr = new SalveTreinador(null).carregarTreinador();
             TelaMenu menu = new TelaMenu(tr);
@@ -135,12 +140,11 @@ public class TelaBatalhaBoss extends JFrame implements ActionListener, Batalha.B
             throw new RuntimeException(e);
         }
 
-
     }
 
     class BackgroundPanel extends JPanel {
 
-        private Image backgroundImage = new ImageIcon(getClass().getResource("imagens/bossBattle-bg.png")).getImage();
+        private Image backgroundImage = new ImageIcon(getClass().getResource("/imagens/bossBattle-bg.png")).getImage();
 
         @Override
         protected void paintComponent(Graphics g) {

@@ -5,7 +5,7 @@ public class Bill extends Bolla implements Serializable {
 
 
     public Bill() {
-        super(1, 1000, 50, "imagens/Bill.png", "Bill");
+        super(1, 550, 50, "imagens/Bill.png", "Bill");
     }
     private String nome = "Bill";
 
@@ -33,7 +33,6 @@ public class Bill extends Bolla implements Serializable {
         if (random.nextFloat() < 0.50) {
 
             dano = danoBase * 2.5f;
-            this.setHp(this.getHp() + 90);
 
         } else {
 

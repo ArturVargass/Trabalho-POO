@@ -7,14 +7,12 @@ import java.io.Serializable;
 public class Treinador implements Serializable{
     private String nome;
 
-
-
-
     private ArrayList<Bolla> bollasPossuidas;
     private int bollaBallsComum = 6;
     private int bollaBallsRara = 2;
     private int vitorias;
     private int derrotas;
+    private boolean zerado = false;
 
 
     public Treinador(String nome){
@@ -89,4 +87,11 @@ public class Treinador implements Serializable{
     }
 
 
+    public boolean isZerado() {
+        return zerado;
+    }
+
+    public void setZerado(boolean zerado) {
+        this.zerado = zerado;
+    }
 }
