@@ -8,13 +8,7 @@ public class Treinador implements Serializable{
     private String nome;
 
 
-    public ArrayList<Bolla> getBollasPossuidas() {
-        return bollasPossuidas;
-    }
 
-    public void setBollasPossuidas(ArrayList<Bolla> bollasPossuidas) {
-        this.bollasPossuidas = bollasPossuidas;
-    }
 
     private ArrayList<Bolla> bollasPossuidas;
     private int bollaBallsComum = 6;
@@ -43,6 +37,14 @@ public class Treinador implements Serializable{
         }
 
         System.out.println(bollasPossuidas);
+    }
+
+    public ArrayList<Bolla> getBollasPossuidas() {
+        return bollasPossuidas;
+    }
+
+    public void setBollasPossuidas(ArrayList<Bolla> bollasPossuidas) {
+        this.bollasPossuidas = bollasPossuidas;
     }
 
     public int getBollaBallsComum() {

@@ -96,6 +96,13 @@ public class TelaCapturaBolla extends JFrame implements ActionListener {
                     JOptionPane.showMessageDialog(null, "Captura falhou com BollaBall Rara.", "Resultado da Captura", JOptionPane.WARNING_MESSAGE);
                 }
                 this.treinador.setBollaBallsRara(this.treinador.getBollaBallsRara() - 1);
+                SalveTreinador s = new SalveTreinador(treinador);
+                try {
+                    s.salvarTreinador();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+
             }
             this.dispose();
             TelaMenu telaMenu = new TelaMenu(treinador);
@@ -109,6 +116,13 @@ public class TelaCapturaBolla extends JFrame implements ActionListener {
                     JOptionPane.showMessageDialog(null, "Captura falhou com BollaBall Comum.", "Resultado da Captura", JOptionPane.WARNING_MESSAGE);
                 }
                 this.treinador.setBollaBallsComum(this.treinador.getBollaBallsComum() - 1);
+                SalveTreinador s = new SalveTreinador(treinador);
+                try {
+                    s.salvarTreinador();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+
             }
             this.dispose();
             TelaMenu telaMenu = new TelaMenu(treinador);

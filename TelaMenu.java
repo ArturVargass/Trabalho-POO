@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import javax.swing.JOptionPane;
+import java.io.InputStream;
 
 public class TelaMenu extends JFrame implements ActionListener {
 
@@ -11,6 +12,7 @@ public class TelaMenu extends JFrame implements ActionListener {
     private  JButton botaoBatalhar = new JButton();
     private String userName;
     private Treinador treinador;
+    private JLabel labelStats = new JLabel();
 
     public TelaMenu(Treinador treinador) {
         this.treinador = treinador;
@@ -34,6 +36,27 @@ public class TelaMenu extends JFrame implements ActionListener {
         botaoBatalhar.setBackground(Color.LIGHT_GRAY);
         botaoBatalhar.addActionListener(this);
 
+        try (InputStream fontStream = getClass().getResourceAsStream("/Minecraftia.ttf")) {
+            if (fontStream == null) {
+                throw new IOException("Fonte não encontrada");
+            }
+            Font minecraftiaFont = Font.createFont(Font.TRUETYPE_FONT, fontStream).deriveFont(20f);
+
+            // Configuração do label com a fonte customizada
+            labelStats.setBounds(10, 0, 260, 200);
+            labelStats.setFont(minecraftiaFont);
+            labelStats.setForeground(Color.BLACK);  // Define o texto em preto
+            labelStats.setText("<html>Nome: " + treinador.getNome() +
+                    "<br>Vitórias: " + treinador.getVitorias() +
+                    "<br>BollaBalls Comuns: " + treinador.getBollaBallsComum() +
+                    "<br>BollaBalls Raras: " + treinador.getBollaBallsRara() +
+                    "</html>");
+        } catch (FontFormatException | IOException e) {
+            e.printStackTrace();
+        }
+
+
+
         botaoProcuraBolla.setBounds(42, 375, 233, 223);
         botaoProcuraBolla.setIcon(procurarBollaImg);
         botaoProcuraBolla.setFocusable(false);
@@ -43,7 +66,7 @@ public class TelaMenu extends JFrame implements ActionListener {
 
         backgroundPanel.add(botaoBatalhar);
         backgroundPanel.add(botaoProcuraBolla);
-
+        backgroundPanel.add(labelStats);
         this.add(backgroundPanel);
         this.setVisible(true);
 
@@ -95,9 +118,7 @@ public class TelaMenu extends JFrame implements ActionListener {
             }else{
 
                 //ABRIR TELA BATALHA
-
-
-
+                TelaEscolhaBolla telaEscolhaBolla = new TelaEscolhaBolla(this.treinador);
 
             }
 
@@ -119,8 +140,3 @@ public class TelaMenu extends JFrame implements ActionListener {
         }
     }
 }
-
-
-
-
-
