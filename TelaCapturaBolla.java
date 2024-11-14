@@ -11,19 +11,12 @@ public class TelaCapturaBolla extends JFrame implements ActionListener {
     private  JButton bollaBallComum = new JButton();
     private Treinador tr;
     private Bolla bollaSorteada;
+    private Treinador treinador;
 
-    public TelaCapturaBolla(Bolla bollaSorteada) {
+    public TelaCapturaBolla(Bolla bollaSorteada, Treinador treinador) {
         this.bollaSorteada = bollaSorteada;
 
-        try {
-            Treinador t = new Treinador("");
-            t = new SalveTreinador(t).carregarTreinador();
-            System.out.println(t.getNome());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        this.treinador = treinador;
 
 
         this.setTitle("Dragon Bolla");
@@ -35,6 +28,10 @@ public class TelaCapturaBolla extends JFrame implements ActionListener {
 
         BackgroundPanel backgroundPanel = new BackgroundPanel();
         backgroundPanel.setLayout(null);
+
+        //numero de bollaRaras
+        System.out.println(treinador.getBollaBallsRara());
+
 
         ImageIcon bollaImg = new ImageIcon(getClass().getResource(bollaSorteada.getImagePath()));
         ImageIcon bollaBallRaraImg = new ImageIcon(getClass().getResource("/imagens/bollaBallRara.png"));
@@ -91,7 +88,9 @@ public class TelaCapturaBolla extends JFrame implements ActionListener {
             System.out.println(tr.getBollaBallsRara());*/
 
         }else if(e.getSource() == bollaBallComum){
-
+            if this.treinador.getBollaBallsComum() <= 1{
+                capturarBolla(bollaSorteada, new BollaBall(2));
+            }
 
             //capturarBolla(bollaSorteada, new BollaBall(2));
 

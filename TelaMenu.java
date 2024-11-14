@@ -10,8 +10,10 @@ public class TelaMenu extends JFrame implements ActionListener {
     private JButton botaoProcuraBolla = new JButton();
     private  JButton botaoBatalhar = new JButton();
     private String userName;
+    private Treinador treinador;
 
-    public TelaMenu() {
+    public TelaMenu(Treinador treinador) {
+        this.treinador = treinador;
         this.setTitle("Dragon Bolla");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(600, 800);
@@ -50,7 +52,7 @@ public class TelaMenu extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == botaoProcuraBolla) {
-            ProcurandoBolla procurandoBolla = new ProcurandoBolla();
+            ProcurandoBolla procurandoBolla = new ProcurandoBolla(this.treinador);
             procurandoBolla.show();
             this.dispose();
         }

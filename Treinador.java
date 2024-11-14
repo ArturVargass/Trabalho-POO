@@ -30,7 +30,7 @@ public class Treinador implements Serializable{
     private int derrotas;
 
 
-    public Treinador(String nickname){
+    public Treinador(String nome){
         this.nome = nome;
         this.bollasPossuidas = new ArrayList<>();
         this.vitorias = 0;

@@ -11,9 +11,10 @@ public class ProcurandoBolla extends JFrame {
 
     private JLabel label = new JLabel();
     private String userName;
+    private Treinador treinador;
 
-    public ProcurandoBolla() {
-
+    public ProcurandoBolla(Treinador treinador) {
+        this.treinador = treinador;
         this.setTitle("Dragon Bolla");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(600, 800);
@@ -23,7 +24,6 @@ public class ProcurandoBolla extends JFrame {
 
         BackgroundPanel backgroundPanel = new BackgroundPanel();
         backgroundPanel.setLayout(null);
-
         Font minecraftiaFont = null;
         try {
             minecraftiaFont = Font.createFont(Font.TRUETYPE_FONT, new File("Minecraftia.ttf")).deriveFont(20f);
@@ -69,12 +69,12 @@ public class ProcurandoBolla extends JFrame {
 
     private void contagem() {
         Random r = new Random();
-         AtomicReference<Bolla> b = new AtomicReference<>();
+        AtomicReference<Bolla> b = new AtomicReference<>();
         List<Bolla> bollas = Arrays.asList(new Datna(), new Glaufora(), new Lavadon(), new Varuk());
         int numero = (r.nextInt(8) + 3) * 1000;
         Timer timer = new Timer(numero, e -> {
             b.set(bollas.get(r.nextInt(bollas.size())));
-            new TelaCapturaBolla(b.get());
+            new TelaCapturaBolla(b.get(), treinador);
             dispose();
         });
         timer.setRepeats(false);

@@ -1,4 +1,3 @@
-import org.jetbrains.annotations.Nullable;
 
 import java.io.*;
 
@@ -7,7 +6,7 @@ class SalveTreinador implements Serializable {
 
     Treinador t;
 
-    public SalveTreinador(@Nullable Treinador t) {
+    public SalveTreinador(Treinador t) {
         this.t=t;
     }
 
