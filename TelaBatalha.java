@@ -8,7 +8,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class TelaBatalha extends JFrame implements ActionListener {
+public class TelaBatalha extends JFrame implements ActionListener, Batalha.BatalhaListener {
 
     private Bolla bollaSelecionada;
     private Bolla inimigo;
@@ -70,6 +70,7 @@ public class TelaBatalha extends JFrame implements ActionListener {
             ArrayList<Bolla> bollaList = new ArrayList<>();
 
             bollaList.add(new Smilex());
+            bollaList.add(new Leptos());
 
             Random random = new Random();
             Bolla bollaSorteada = bollaList.get(random.nextInt(bollaList.size()));
@@ -120,6 +121,23 @@ public class TelaBatalha extends JFrame implements ActionListener {
         }*/
     }
 
+    @Override
+    public void onBatalhaFinalizada() {
+
+        try {
+            Treinador tr = new SalveTreinador(null).carregarTreinador();
+            TelaMenu menu = new TelaMenu(tr);
+            menu.show();
+            dispose();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
     class BackgroundPanel extends JPanel {
 
         private Image backgroundImage = new ImageIcon(getClass().getResource("imagens/batalhaComTexto-bg.png")).getImage();
@@ -137,6 +155,7 @@ public class TelaBatalha extends JFrame implements ActionListener {
 
         Batalha batalha = new Batalha(bollaSelecionada, inimigo);
         batalha.iniciarBatalha(ataqueBolla, ataqueInimigo);
+        batalha.setBatalhaListener(this);
 
     }
 

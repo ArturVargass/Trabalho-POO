@@ -103,9 +103,10 @@ public class TelaCapturaBolla extends JFrame implements ActionListener {
                     throw new RuntimeException(ex);
                 }
 
+            }else{
+                JOptionPane.showMessageDialog(null, "Você não possui nenhuma BollaBall rara!", "....", JOptionPane.INFORMATION_MESSAGE);
             }
-            this.dispose();
-            TelaMenu telaMenu = new TelaMenu(treinador);
+
         } else if (e.getSource() == bollaBallComum) {
             if (this.treinador.getBollaBallsComum() >= 1) {
                 // 50% de chance de capturar
@@ -123,9 +124,12 @@ public class TelaCapturaBolla extends JFrame implements ActionListener {
                     throw new RuntimeException(ex);
                 }
 
+            }else{
+                JOptionPane.showMessageDialog(null, "Você não possui nenhuma BollaBall comum!", "....", JOptionPane.INFORMATION_MESSAGE);
             }
             this.dispose();
             TelaMenu telaMenu = new TelaMenu(treinador);
+            telaMenu.show();
         }
     }
 

@@ -5,7 +5,7 @@ public class Smilex extends Bolla implements Serializable {
 
 
     public Smilex() {
-        super(1, 200, 300, "imagens/Smilex.png", "Smilex");
+        super(1, 200, 30, "imagens/Smilex.png", "Smilex");
     }
 
     private String nome = "Smilex";
