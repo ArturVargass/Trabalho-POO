@@ -14,6 +14,7 @@ public class TelaMenu extends JFrame implements ActionListener {
     private String userName;
     private Treinador treinador;
     private JLabel labelStats = new JLabel();
+    private  JButton botaoBoss = new JButton();
 
     public TelaMenu(Treinador treinador) {
         this.treinador = treinador;
@@ -46,6 +47,17 @@ public class TelaMenu extends JFrame implements ActionListener {
         botaoEstatisticas.setBackground(Color.LIGHT_GRAY);
         botaoEstatisticas.addActionListener(this);
 
+        if (this.treinador.getVitorias() >= 0){
+            botaoBoss = new JButton();
+            ImageIcon botaoBossImg = new ImageIcon(getClass().getResource("/imagens/botaoBill.png"));
+            botaoBoss.setBounds(0, 0, 256, 225);
+            botaoBoss.setIcon(botaoBossImg);
+            botaoBoss.setFocusable(false);
+            botaoBoss.setBackground(Color.LIGHT_GRAY);
+            botaoBoss.addActionListener(this);
+
+            backgroundPanel.add(botaoBoss);
+        }
 
 
         botaoProcuraBolla.setBounds(42, 375, 233, 223);
@@ -132,6 +144,11 @@ public class TelaMenu extends JFrame implements ActionListener {
         if (e.getSource() == botaoEstatisticas) {
             System.out.println("stats");
             TelaEstatisticas telaEstatisticas = new TelaEstatisticas(this.treinador);
+            this.dispose();
+        }
+        if (e.getSource() == botaoBoss) {
+            System.out.println("stats");
+            TelaEscolhaBollaBoss telaEscolhaBollaBoss = new TelaEscolhaBollaBoss(treinador);
             this.dispose();
         }
     }
