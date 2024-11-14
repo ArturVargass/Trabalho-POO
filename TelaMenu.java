@@ -10,6 +10,7 @@ public class TelaMenu extends JFrame implements ActionListener {
 
     private JButton botaoProcuraBolla = new JButton();
     private  JButton botaoBatalhar = new JButton();
+    private  JButton botaoEstatisticas = new JButton();
     private String userName;
     private Treinador treinador;
     private JLabel labelStats = new JLabel();
@@ -28,6 +29,7 @@ public class TelaMenu extends JFrame implements ActionListener {
 
         ImageIcon procurarBollaImg = new ImageIcon(getClass().getResource("/imagens/ProcurarBolla1.png"));
         ImageIcon botaoBatalhaImg = new ImageIcon(getClass().getResource("/imagens/BotaoBatalha.png"));
+        ImageIcon botaoEstatisticasImg = new ImageIcon(getClass().getResource("/imagens/BotaoEstatisticas.png"));
 
         botaoBatalhar.setBounds(275, 620, 147, 147);
         botaoBatalhar.setIcon(botaoBatalhaImg);
@@ -36,26 +38,12 @@ public class TelaMenu extends JFrame implements ActionListener {
         botaoBatalhar.setBackground(Color.LIGHT_GRAY);
         botaoBatalhar.addActionListener(this);
 
-        try (InputStream fontStream = getClass().getResourceAsStream("/Minecraftia.ttf")) {
-            if (fontStream == null) {
-                throw new IOException("Fonte não encontrada");
-            }
-            Font minecraftiaFont = Font.createFont(Font.TRUETYPE_FONT, fontStream).deriveFont(20f);
-
-            // Configuração do label com a fonte customizada
-            labelStats.setBounds(10, 0, 260, 200);
-            labelStats.setFont(minecraftiaFont);
-            labelStats.setForeground(Color.BLACK);  // Define o texto em preto
-            labelStats.setText("<html>Nome: " + treinador.getNome() +
-                    "<br>Vitórias: " + treinador.getVitorias() +
-                    "<br>BollaBalls Comuns: " + treinador.getBollaBallsComum() +
-                    "<br>BollaBalls Raras: " + treinador.getBollaBallsRara() +
-                    "<br>Bollas: " + treinador.getBollasPossuidas().size() +
-                    "<br>Derrotas: " + treinador.getDerrotas() +
-                    "</html>");
-        } catch (FontFormatException | IOException e) {
-            e.printStackTrace();
-        }
+        botaoEstatisticas.setBounds(321, 417, 207, 186);
+        botaoEstatisticas.setIcon(botaoEstatisticasImg);
+        botaoEstatisticas.setFocusable(false);
+        botaoEstatisticas.setFont(new Font("Roboto Mono", Font.PLAIN, 16));
+        botaoEstatisticas.setBackground(Color.LIGHT_GRAY);
+        botaoEstatisticas.addActionListener(this);
 
 
 
@@ -66,6 +54,7 @@ public class TelaMenu extends JFrame implements ActionListener {
         botaoProcuraBolla.setBackground(Color.LIGHT_GRAY);
         botaoProcuraBolla.addActionListener(this);
 
+        backgroundPanel.add(botaoEstatisticas);
         backgroundPanel.add(botaoBatalhar);
         backgroundPanel.add(botaoProcuraBolla);
         backgroundPanel.add(labelStats);
@@ -126,6 +115,11 @@ public class TelaMenu extends JFrame implements ActionListener {
 
             System.out.println("botao batalha");
 
+        }
+        if (e.getSource() == botaoEstatisticas) {
+            System.out.println("stats");
+            TelaEstatisticas telaEstatisticas = new TelaEstatisticas(this.treinador);
+            this.dispose();
         }
     }
 
