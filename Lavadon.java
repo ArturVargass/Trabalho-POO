@@ -4,7 +4,7 @@ public class Lavadon extends Bolla implements Serializable {
 
 
     public Lavadon() {
-        super(1, 10, 3, "/imagens/Lavadon.png");
+        super(1, 100, 3, "/imagens/Lavadon.png");
     }
 
 

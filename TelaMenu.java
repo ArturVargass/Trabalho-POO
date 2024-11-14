@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-
+import javax.swing.JOptionPane;
 
 public class TelaMenu extends JFrame implements ActionListener {
 
@@ -47,17 +47,62 @@ public class TelaMenu extends JFrame implements ActionListener {
         this.add(backgroundPanel);
         this.setVisible(true);
 
+        SalveTreinador s = new SalveTreinador(null);
+        try {
+            Treinador tr = s.carregarTreinador();
+
+            System.out.println(tr.getBollasPossuidas().size());
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == botaoProcuraBolla) {
-            ProcurandoBolla procurandoBolla = new ProcurandoBolla(this.treinador);
-            procurandoBolla.show();
-            this.dispose();
+
+            if(treinador.getBollaBallsComum() == 0 && treinador.getBollaBallsRara() == 0) {
+                Exception InGameExceptions;
+                try {
+                    JOptionPane.showMessageDialog(null, "Você não possui nenhuma BollaBall para capturar!", "PUTS!", JOptionPane.WARNING_MESSAGE);
+                    throw new CaptureException();
+                } catch (InGameExceptions ex) {
+                    throw new RuntimeException(ex);
+                }
+
+
+            }else{
+
+                ProcurandoBolla procurandoBolla = new ProcurandoBolla(this.treinador);
+                procurandoBolla.show();
+                this.dispose();
+            }
+
         }
         if (e.getSource() == botaoBatalhar) {
+
+            if(treinador.getBollasPossuidas().size() == 0) {
+
+                //CODIGO NENHUMA BOLLA POSSUIDO
+                JOptionPane.showMessageDialog(null, "Você não possui nenhum Bolla para batalhar, capture primeiro!", "OH SHIT!", JOptionPane.WARNING_MESSAGE);
+
+
+            }else{
+
+                //ABRIR TELA BATALHA
+
+
+
+
+            }
+
             System.out.println("botao batalha");
+
         }
     }
 

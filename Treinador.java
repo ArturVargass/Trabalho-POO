@@ -34,18 +34,16 @@ public class Treinador implements Serializable{
     public void capturarBolla(Bolla b){
         //mostrar na interface a seleção das BollaBalls disponíveis para capturar o BollaBall
         bollasPossuidas.add(b);
+
+        SalveTreinador s = new SalveTreinador(this);
+        try {
+            s.salvarTreinador();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         System.out.println(bollasPossuidas);
     }
-
-    public void salvarEmArquivo(String caminho) {
-        try (FileOutputStream fileOut = new FileOutputStream(caminho);
-             ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
-            out.writeObject(this);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 
     public int getBollaBallsComum() {
         return bollaBallsComum;

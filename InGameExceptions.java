@@ -9,7 +9,7 @@ public class InGameExceptions extends Exception{
     }
 
 
-
+    // erro ao tentar capturar com 0 bollaballs
 
 
 

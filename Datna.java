@@ -9,8 +9,7 @@ public class Datna extends Bolla implements Serializable {
 
 
     @Override
-    public void atacar(Bolla b)
-    {
+    public void atacar(Bolla b) {
         b.setHp(b.getHp() - (this.getPoder() + 25.0f));
 
 

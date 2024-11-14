@@ -2,7 +2,7 @@ public class Glaufora extends Bolla{
 
 
     public Glaufora() {
-        super(1, 10, 3, "/imagens/Glaufora.png");
+        super(1, 100, 3, "/imagens/Glaufora.png");
     }
 
 
