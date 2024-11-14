@@ -3,47 +3,93 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class TelaBatalha extends JFrame implements ActionListener {
 
-    private JButton bollaBallRara = new JButton();
-    private JButton bollaBallComum = new JButton();
-    private Treinador treinador;
     private Bolla bollaSelecionada;
-
+    private Bolla inimigo;
+    JLabel ataqueBolla;
+    JLabel ataqueInimigo;
     public TelaBatalha(Treinador treinador, Bolla bollaSelecionada) {
         this.setTitle("Dragon Bolla");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(600, 800);
         this.setResizable(false);
-        this.treinador = treinador;
-        this.bollaSelecionada = bollaSelecionada;
 
         this.setLocationRelativeTo(null);
+        this.bollaSelecionada = bollaSelecionada;
 
         BackgroundPanel backgroundPanel = new BackgroundPanel();
         backgroundPanel.setLayout(null);
 
-        ImageIcon bollaAdversariaImg = new ImageIcon(getClass().getResource("/imagens/Smilex.png"));
+        ImageIcon bollaAdversariaImg;
         ImageIcon bollaSelecionadaImg = new ImageIcon(getClass().getResource(bollaSelecionada.getImagePath()));
+        InputStream fontStream = getClass().getResourceAsStream("/Minecraftia.ttf");
+        if (fontStream == null) {
+            try {
+                throw new IOException("Fonte não encontrada");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        Font minecraftiaFont = null;
+        try {
+            minecraftiaFont = Font.createFont(Font.TRUETYPE_FONT, fontStream).deriveFont(13f);
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(minecraftiaFont);
 
-        JLabel bollaSelecionadaLabel = new JLabel();
-        bollaSelecionadaLabel.setIcon(new ImageIcon(invertImage(bollaSelecionadaImg.getImage()))); // Define imagem invertida
-        bollaSelecionadaLabel.setBounds(70, 401, 205, 225);
-        bollaSelecionadaLabel.setHorizontalTextPosition(JLabel.CENTER);
-        bollaSelecionadaLabel.setVerticalTextPosition(JLabel.BOTTOM);
+            ataqueBolla = new JLabel();
+            ataqueInimigo = new JLabel();
+            ataqueBolla.setFont(minecraftiaFont);
+            ataqueInimigo.setFont(minecraftiaFont);
 
-        JLabel bollaAdversaria = new JLabel();
-        bollaAdversaria.setIcon(bollaAdversariaImg);
-        bollaAdversaria.setBounds(360, 451, 150, 150);
-        bollaAdversaria.setHorizontalTextPosition(JLabel.CENTER);
-        bollaAdversaria.setVerticalTextPosition(JLabel.BOTTOM);
+            ataqueBolla.setBounds(40, 101, 270, 100);
+            ataqueInimigo.setBounds(340, 101, 300, 100);
 
-        backgroundPanel.add(bollaAdversaria);
-        backgroundPanel.add(bollaSelecionadaLabel);
+            ataqueInimigo.setForeground(Color.WHITE);
+            ataqueBolla.setForeground(Color.WHITE);
 
-        this.add(backgroundPanel);
-        this.setVisible(true);
+            backgroundPanel.add(ataqueBolla);
+            backgroundPanel.add(ataqueInimigo);
+
+            JLabel bollaSelecionadaLabel = new JLabel();
+            bollaSelecionadaLabel.setIcon(new ImageIcon(invertImage(bollaSelecionadaImg.getImage()))); // Define imagem invertida
+            bollaSelecionadaLabel.setBounds(70, 401, 205, 225);
+            bollaSelecionadaLabel.setHorizontalTextPosition(JLabel.CENTER);
+            bollaSelecionadaLabel.setVerticalTextPosition(JLabel.BOTTOM);
+
+            ArrayList<Bolla> bollaList = new ArrayList<>();
+            bollaList.add(new Smilex());
+
+            Random random = new Random();
+            Bolla bollaSorteada = bollaList.get(random.nextInt(bollaList.size()));
+            this.inimigo = bollaSorteada;
+            bollaAdversariaImg = new ImageIcon(getClass().getResource(bollaSorteada.getImagePath()));
+
+            JLabel bollaAdversaria = new JLabel();
+            bollaAdversaria.setIcon(bollaAdversariaImg);
+            bollaAdversaria.setBounds(360, 451, 150, 150);
+            bollaAdversaria.setHorizontalTextPosition(JLabel.CENTER);
+            bollaAdversaria.setVerticalTextPosition(JLabel.BOTTOM);
+
+            backgroundPanel.add(bollaAdversaria);
+            backgroundPanel.add(bollaSelecionadaLabel);
+
+            this.add(backgroundPanel);
+            this.setVisible(true);
+
+            iniciarBatalha();
+        } catch (FontFormatException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
     }
 
     private BufferedImage invertImage(Image image) {
@@ -63,14 +109,14 @@ public class TelaBatalha extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == bollaBallRara) {
+        /*if (e.getSource() == bollaBallRara) {
             System.out.println("botão batalha");
-        }
+        }*/
     }
 
     class BackgroundPanel extends JPanel {
 
-        private Image backgroundImage = new ImageIcon(getClass().getResource("/imagens/batalha-bg.png")).getImage();
+        private Image backgroundImage = new ImageIcon(getClass().getResource("imagens/batalhaComTexto-bg.png")).getImage();
 
         @Override
         protected void paintComponent(Graphics g) {
@@ -80,4 +126,12 @@ public class TelaBatalha extends JFrame implements ActionListener {
             g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         }
     }
+
+    public void iniciarBatalha(){
+
+        Batalha batalha = new Batalha(bollaSelecionada, inimigo);
+        batalha.iniciarBatalha(ataqueBolla, ataqueInimigo);
+
+    }
+
 }

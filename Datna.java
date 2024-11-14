@@ -7,6 +7,7 @@ public class Datna extends Bolla implements Serializable {
     public Datna() {
         super(1, 180, 30, "imagens/Datna.png");
     }
+    private String nome = "Datna";
 
 
     @Override
@@ -23,7 +24,6 @@ public class Datna extends Bolla implements Serializable {
         }
 
         b.setHp(Math.max(0, b.getHp() - dano));
-
     }
 
     @Override
@@ -43,7 +43,7 @@ public class Datna extends Bolla implements Serializable {
 
         } else {
 
-            dano = 0;
+            dano = this.getPoder();
 
         }
 
@@ -72,6 +72,11 @@ public class Datna extends Bolla implements Serializable {
     public void defender(float danoRecebido){
 
 
+    }
+
+    @Override
+    public String getNome() {
+        return nome;
     }
 }
 

@@ -6,6 +6,7 @@ public class Varuk extends Bolla implements Serializable {
     public Varuk() {
         super(1, 200, 30, "imagens/Varuk.png");
     }
+    private String nome = "Varuk";
 
     @Override
     public void atacarBasico(Bolla b) {
@@ -35,7 +36,7 @@ public class Varuk extends Bolla implements Serializable {
             dano = danoBase * 2.5f;
             this.setHp(this.getHp() + 15);
         } else {
-            dano = 0;
+            dano = this.getPoder();
         }
 
         b.setHp(Math.max(0, b.getHp() - dano));
@@ -61,5 +62,10 @@ public class Varuk extends Bolla implements Serializable {
     @Override
     public void defender(float danoRecebido) {
 
+    }
+
+    @Override
+    public String getNome() {
+        return nome;
     }
 }

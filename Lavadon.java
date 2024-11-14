@@ -3,6 +3,7 @@ import java.util.Random;
 
 public class Lavadon extends Bolla implements Serializable {
 
+    private String nome = "Lavadon";
 
     public Lavadon() {
         super(1, 200, 30, "imagens/Lavadon.png");
@@ -37,7 +38,7 @@ public class Lavadon extends Bolla implements Serializable {
 
         } else {
 
-            dano = 0;
+            dano = this.getPoder();
 
         }
 

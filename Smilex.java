@@ -8,6 +8,9 @@ public class Smilex extends Bolla implements Serializable {
         super(1, 200, 30, "imagens/Smilex.png");
     }
 
+    private String nome = "Smilex";
+
+
 
     @Override
     public void atacarBasico(Bolla b) {
@@ -37,7 +40,7 @@ public class Smilex extends Bolla implements Serializable {
 
         } else {
 
-            dano = 0;
+            dano = this.getPoder();
 
         }
 
@@ -67,4 +70,8 @@ public class Smilex extends Bolla implements Serializable {
     }
 
 
+    @Override
+    public String getNome() {
+        return nome;
+    }
 }

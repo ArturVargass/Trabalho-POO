@@ -5,7 +5,7 @@ public abstract class Bolla implements Serializable {
     public void setHp(float hp) {
         this.hp = hp;
     }
-
+    private String nome;
     private float hp;
     private float poder;
     private int nivel;
@@ -42,5 +42,8 @@ public abstract class Bolla implements Serializable {
         return imagePath;
     }
 
+    public String getNome() {
+        return nome;
+    }
 }
 

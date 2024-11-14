@@ -1,31 +1,45 @@
+import javax.swing.*;
+
 public class Round {
 
     private Bolla bolla, inimigo;
+    private int contador = 1;
+    private float hpInicialBolla;
+    private float hpInicialInimigo;
 
-    private int contador = 0;
-
-    public Round(Bolla bolla, Bolla inimigo){
-
+    public Round(Bolla bolla, Bolla inimigo) {
         this.bolla = bolla;
-
         this.inimigo = inimigo;
-
+        this.hpInicialBolla = bolla.getHp();
+        this.hpInicialInimigo = inimigo.getHp();
     }
 
-    public int realizarRound(){
+    public void realizarRound(JLabel ataqueBollaLabel, JLabel ataqueInimigoLabel) {
+        // Armazenar HP antes do ataque
+        float hpAntesBolla = bolla.getHp();
+        float hpAntesInimigo = inimigo.getHp();
 
-        bolla.atacarBasico(inimigo);
-        inimigo.atacarBasico(bolla);
+        // Realizar ataques
+        bolla.atacar(inimigo);
+        inimigo.atacar(bolla);
 
-        System.out.println(" round "+ contador + "-------------------------");
-        System.out.println("bolla hp: "+bolla.getHp());
-        System.out.println("inimigo hp: "+inimigo.getHp());
+        // Calcular o dano causado
+        float danoCausadoBolla = hpAntesInimigo - inimigo.getHp();
+        float danoCausadoInimigo = hpAntesBolla - bolla.getHp();
+
+
+
+
+        // Atualizar os labels com os danos causados
+        ataqueBollaLabel.setText(bolla.getNome() + " causou " + danoCausadoBolla + " de dano");
+        ataqueInimigoLabel.setText(inimigo.getNome() + " causou " + danoCausadoInimigo + " de dano");
+
+        System.out.println("Round " + contador + "-------------------------");
+        System.out.println("Bolla HP: " + bolla.getHp());
+        System.out.println("Inimigo HP: " + inimigo.getHp());
         System.out.println("-------------------------");
 
-        contador +=1;
-
-        return finalizarBatalha();
-
+        contador += 1; // Incrementar após exibição
     }
 
     public int finalizarBatalha() {
@@ -43,4 +57,5 @@ public class Round {
 
     }
 
+    // ... (restante da classe)
 }

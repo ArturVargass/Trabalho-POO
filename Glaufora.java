@@ -6,6 +6,7 @@ public class Glaufora extends Bolla implements Serializable {
     public Glaufora() {
         super(1, 200, 30, "imagens/Glaufora.png");
     }
+    private String nome = "Glaufora";
 
     @Override
     public void atacarBasico(Bolla b) {
@@ -31,16 +32,8 @@ public class Glaufora extends Bolla implements Serializable {
         float danoBase = this.getPoder();
         float dano;
 
-        if (random.nextFloat() < 0.15) {
-
-            dano = danoBase * 2.5f;
-            this.setHp(this.getHp() + 60);
-
-        } else {
-
-            dano = 0;
-
-        }
+        dano = danoBase * 2.5f;
+        this.setHp(this.getHp() + 60);
 
         b.setHp(Math.max(0, b.getHp() - dano));
     }
@@ -68,4 +61,8 @@ public class Glaufora extends Bolla implements Serializable {
     }
 
 
+    @Override
+    public String getNome() {
+        return nome;
+    }
 }

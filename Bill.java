@@ -7,7 +7,7 @@ public class Bill extends Bolla implements Serializable {
     public Bill() {
         super(1, 200, 30, "imagens/Bill.png");
     }
-
+    private String nome = "Bill";
 
     @Override
     public void atacarBasico(Bolla b) {

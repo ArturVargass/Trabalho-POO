@@ -62,7 +62,6 @@ public class TelaEscolhaBolla extends JFrame {
             }
         });
 
-
         JButton selectButton = new JButton("Selecionar Bolla");
         selectButton.setBounds(200, 600, 200, 50);
         selectButton.setFont(new Font("Arial", Font.PLAIN, 18));
@@ -76,17 +75,18 @@ public class TelaEscolhaBolla extends JFrame {
             }
         });
 
-
         backgroundPanel.add(nextButton);
         backgroundPanel.add(prevButton);
         backgroundPanel.add(selectButton);
 
         this.add(backgroundPanel);
         this.setVisible(true);
+
     }
 
     private void updateBollaImage() {
         if (bollas.size() > 0) {
+
             Bolla bolla = bollas.get(bollaIndex);
             String imagePath = bolla.getImagePath().replaceFirst("^/", "");
 
