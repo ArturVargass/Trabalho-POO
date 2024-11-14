@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.Random;
+import javax.swing.JOptionPane;
 
 
 public class TelaCapturaBolla extends JFrame implements ActionListener {
@@ -83,25 +84,27 @@ public class TelaCapturaBolla extends JFrame implements ActionListener {
                 // 80% de chance de capturar
                 if (random.nextDouble() <= 0.8) {
                     this.treinador.capturarBolla(bollaSorteada);
-                    System.out.println("Captura bem-sucedida com BollaBall Rara!");
+                    JOptionPane.showMessageDialog(null, "Captura bem-sucedida com BollaBall Rara!", "Resultado da Captura", JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                    System.out.println("Captura falhou com BollaBall Rara.");
+                    JOptionPane.showMessageDialog(null, "Captura falhou com BollaBall Rara.", "Resultado da Captura", JOptionPane.WARNING_MESSAGE);
                 }
                 this.treinador.setBollaBallsRara(this.treinador.getBollaBallsRara() - 1);
-
             }
+            this.dispose();
+            TelaMenu telaMenu = new TelaMenu(treinador);
         } else if (e.getSource() == bollaBallComum) {
             if (this.treinador.getBollaBallsComum() >= 1) {
                 // 50% de chance de capturar
                 if (random.nextDouble() <= 0.5) {
                     this.treinador.capturarBolla(bollaSorteada);
-                    System.out.println("Captura bem-sucedida com BollaBall Comum!");
+                    JOptionPane.showMessageDialog(null, "Captura bem-sucedida com BollaBall Comum!", "Resultado da Captura", JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                    System.out.println("Captura falhou com BollaBall Comum.");
+                    JOptionPane.showMessageDialog(null, "Captura falhou com BollaBall Comum.", "Resultado da Captura", JOptionPane.WARNING_MESSAGE);
                 }
                 this.treinador.setBollaBallsComum(this.treinador.getBollaBallsComum() - 1);
-
             }
+            this.dispose();
+            TelaMenu telaMenu = new TelaMenu(treinador);
         }
     }
 
