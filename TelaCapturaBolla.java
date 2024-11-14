@@ -106,6 +106,9 @@ public class TelaCapturaBolla extends JFrame implements ActionListener {
             }else{
                 JOptionPane.showMessageDialog(null, "Você não possui nenhuma BollaBall rara!", "....", JOptionPane.INFORMATION_MESSAGE);
             }
+            this.dispose();
+            TelaMenu telaMenu = new TelaMenu(treinador);
+            telaMenu.show();
 
         } else if (e.getSource() == bollaBallComum) {
             if (this.treinador.getBollaBallsComum() >= 1) {

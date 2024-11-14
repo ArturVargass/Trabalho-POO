@@ -140,7 +140,7 @@ public class TelaBatalhaBoss extends JFrame implements ActionListener, Batalha.B
 
     class BackgroundPanel extends JPanel {
 
-        private Image backgroundImage = new ImageIcon(getClass().getResource("imagens/batalhaComTexto-bg.png")).getImage();
+        private Image backgroundImage = new ImageIcon(getClass().getResource("imagens/bossBattle-bg.png")).getImage();
 
         @Override
         protected void paintComponent(Graphics g) {

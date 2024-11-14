@@ -79,7 +79,7 @@ public class TelaBatalha extends JFrame implements ActionListener, Batalha.Batal
 
             JLabel bollaAdversaria = new JLabel();
             bollaAdversaria.setIcon(bollaAdversariaImg);
-            bollaAdversaria.setBounds(360, 451, 150, 150);
+            bollaAdversaria.setBounds(360, 410, 205, 225);
             bollaAdversaria.setHorizontalTextPosition(JLabel.CENTER);
             bollaAdversaria.setVerticalTextPosition(JLabel.BOTTOM);
 
@@ -123,7 +123,6 @@ public class TelaBatalha extends JFrame implements ActionListener, Batalha.Batal
 
     @Override
     public void onBatalhaFinalizada() {
-
         try {
             Treinador tr = new SalveTreinador(null).carregarTreinador();
             TelaMenu menu = new TelaMenu(tr);
@@ -134,8 +133,6 @@ public class TelaBatalha extends JFrame implements ActionListener, Batalha.Batal
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-
-
     }
 
     class BackgroundPanel extends JPanel {

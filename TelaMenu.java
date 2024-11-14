@@ -141,16 +141,31 @@ public class TelaMenu extends JFrame implements ActionListener {
             System.out.println("botao batalha");
 
         }
+
+
+        if (e.getSource() == botaoBoss) {
+
+            if(treinador.getBollasPossuidas().size() == 0) {
+
+                //CODIGO NENHUMA BOLLA POSSUIDO
+                JOptionPane.showMessageDialog(null, "Você não possui nenhum Bolla para batalhar, capture primeiro!", "OH SHIT!", JOptionPane.WARNING_MESSAGE);
+
+            }else{
+
+                //ABRIR TELA BATALHA BOSS
+
+            }
+
+            System.out.println("botao batalha");
+
+        }
+
         if (e.getSource() == botaoEstatisticas) {
             System.out.println("stats");
             TelaEstatisticas telaEstatisticas = new TelaEstatisticas(this.treinador);
             this.dispose();
         }
-        if (e.getSource() == botaoBoss) {
-            System.out.println("stats");
-            TelaEscolhaBollaBoss telaEscolhaBollaBoss = new TelaEscolhaBollaBoss(treinador);
-            this.dispose();
-        }
+
     }
 
     class BackgroundPanel extends JPanel {

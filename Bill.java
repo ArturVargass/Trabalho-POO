@@ -5,7 +5,7 @@ public class Bill extends Bolla implements Serializable {
 
 
     public Bill() {
-        super(1, 200, 30, "imagens/Bill.png", "Bill");
+        super(1, 1000, 50, "imagens/Bill.png", "Bill");
     }
     private String nome = "Bill";
 
@@ -14,7 +14,7 @@ public class Bill extends Bolla implements Serializable {
         Random random = new Random();
         float dano;
 
-        if (random.nextFloat() < 0.35) {
+        if (random.nextFloat() < 0.40) {
             dano = (float) (this.getPoder() * 2); // Dano crítico
         } else {
             dano =  this.getPoder(); // Dano normal
@@ -27,13 +27,13 @@ public class Bill extends Bolla implements Serializable {
     public void ataqueEspecial(Bolla b) {
         Random random = new Random();
 
-        float danoBase = this.getPoder() + 15.0f;
+        float danoBase = this.getPoder() + 35.0f;
         float dano;
 
-        if (random.nextFloat() < 0.30) {
+        if (random.nextFloat() < 0.50) {
 
             dano = danoBase * 2.5f;
-            this.setHp(this.getHp() + 25);
+            this.setHp(this.getHp() + 90);
 
         } else {
 
@@ -49,7 +49,7 @@ public class Bill extends Bolla implements Serializable {
 
         Random random = new Random();
 
-        if (random.nextFloat() < 0.35) {
+        if (random.nextFloat() < 0.55) {
 
             ataqueEspecial(b);
 
