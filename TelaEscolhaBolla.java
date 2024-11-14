@@ -25,15 +25,15 @@ public class TelaEscolhaBolla extends JFrame {
         BackgroundPanel backgroundPanel = new BackgroundPanel();
         backgroundPanel.setLayout(null);
 
-        // Inicializar a imagem da Bolla
+
         bollaLabel = new JLabel();
         bollaLabel.setBounds(195, 114, 185, 425);
         bollaLabel.setHorizontalTextPosition(JLabel.CENTER);
         bollaLabel.setVerticalTextPosition(JLabel.BOTTOM);
-        updateBollaImage(); // Exibe a imagem da primeira Bolla
+        updateBollaImage(); // exibe primeiro Bolla
         backgroundPanel.add(bollaLabel);
 
-        // Botão de seta para a direita (Próxima Bolla)
+
         JButton nextButton = new JButton(">");
         nextButton.setBounds(450, 350, 50, 50);
         nextButton.setFont(new Font("Arial", Font.PLAIN, 24));
@@ -48,7 +48,6 @@ public class TelaEscolhaBolla extends JFrame {
             }
         });
 
-        // Botão de seta para a esquerda (Bolla Anterior)
         JButton prevButton = new JButton("<");
         prevButton.setBounds(100, 350, 50, 50);
         prevButton.setFont(new Font("Arial", Font.PLAIN, 24));
@@ -63,7 +62,7 @@ public class TelaEscolhaBolla extends JFrame {
             }
         });
 
-        // Botão para selecionar a Bolla atual
+
         JButton selectButton = new JButton("Selecionar Bolla");
         selectButton.setBounds(200, 600, 200, 50);
         selectButton.setFont(new Font("Arial", Font.PLAIN, 18));
@@ -71,13 +70,13 @@ public class TelaEscolhaBolla extends JFrame {
         selectButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Bolla selectedBolla = bollas.get(bollaIndex);
-                JOptionPane.showMessageDialog(null, "Bolla selecionada: " + selectedBolla.getImagePath());
-                // Aqui, você pode adicionar lógica adicional para manipular a seleção
+                Bolla bollaSelecionada = bollas.get(bollaIndex);
+                TelaBatalha telaBatalha = new TelaBatalha(treinador, bollaSelecionada);
+                dispose();
             }
         });
 
-        // Adiciona os componentes ao painel de fundo
+
         backgroundPanel.add(nextButton);
         backgroundPanel.add(prevButton);
         backgroundPanel.add(selectButton);

@@ -35,15 +35,16 @@ public class MyFrame extends JFrame implements ActionListener {
             JLabel label = new JLabel();
             label.setText("Digite seu nome:");
             label.setIcon(treinadorImg);
-            label.setBounds(195, 114, 185, 425);
+            label.setBounds(195, 220, 185, 425);
+            label.setForeground(Color.WHITE);
             label.setHorizontalTextPosition(JLabel.CENTER);
             label.setVerticalTextPosition(JLabel.BOTTOM);
             label.setFont(minecraftiaFont);
 
-            nameInput.setBounds(210, 500, 155, 30);
+            nameInput.setBounds(210, 610, 155, 30);
             nameInput.setFont(minecraftiaFont);
 
-            enterButton.setBounds(225, 550, 120, 50);
+            enterButton.setBounds(225, 660, 120, 50);
             enterButton.addActionListener(this);
             enterButton.setText("Entrar");
             enterButton.setFocusable(false);
@@ -66,7 +67,7 @@ public class MyFrame extends JFrame implements ActionListener {
 
     class BackgroundPanel extends JPanel {
 
-        private Image backgroundImage = new ImageIcon("imagens/login-bg.jpg").getImage();
+        private Image backgroundImage = new ImageIcon("imagens/criarConta-bg.png").getImage();
 
         @Override
         protected void paintComponent(Graphics g) {

@@ -119,7 +119,7 @@ public class TelaMenu extends JFrame implements ActionListener {
 
                 //ABRIR TELA BATALHA
                 TelaEscolhaBolla telaEscolhaBolla = new TelaEscolhaBolla(this.treinador);
-
+                this.dispose();
             }
 
             System.out.println("botao batalha");
