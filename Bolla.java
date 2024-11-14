@@ -18,6 +18,10 @@ public abstract class Bolla implements Serializable {
         this.imagePath = imagePath;
     }
 
+    public abstract void atacarBasico(Bolla b);
+
+    public abstract void ataqueEspecial(Bolla b);
+
     public abstract void atacar(Bolla b);
 
     public abstract void defender(float danoRecebido);
@@ -34,9 +38,9 @@ public abstract class Bolla implements Serializable {
         return poder;
     }
 
-
     public String getImagePath() {
         return imagePath;
     }
+
 }
 
