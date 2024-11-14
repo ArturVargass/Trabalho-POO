@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.Random;
 
 
 public class TelaCapturaBolla extends JFrame implements ActionListener {
@@ -75,26 +76,32 @@ public class TelaCapturaBolla extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        Random random = new Random();
+
         if (e.getSource() == bollaBallRara) {
+            if (this.treinador.getBollaBallsRara() >= 1) {
+                // 80% de chance de capturar
+                if (random.nextDouble() <= 0.8) {
+                    this.treinador.capturarBolla(bollaSorteada);
+                    System.out.println("Captura bem-sucedida com BollaBall Rara!");
+                } else {
+                    System.out.println("Captura falhou com BollaBall Rara.");
+                }
+                this.treinador.setBollaBallsRara(this.treinador.getBollaBallsRara() - 1);
 
-
-            //capturarBolla(bollaSorteada, new BollaBall(1));
-
-            /*System.out.println(tr.getNome());
-            System.out.println(tr.getBollasPossuidas());
-            System.out.println(tr.getVitorias());
-            System.out.println(tr.getDerrotas());
-            System.out.println(tr.getBollaBallsComum());
-            System.out.println(tr.getBollaBallsRara());*/
-
-        }else if(e.getSource() == bollaBallComum){
-            if this.treinador.getBollaBallsComum() <= 1{
-                capturarBolla(bollaSorteada, new BollaBall(2));
             }
+        } else if (e.getSource() == bollaBallComum) {
+            if (this.treinador.getBollaBallsComum() >= 1) {
+                // 50% de chance de capturar
+                if (random.nextDouble() <= 0.5) {
+                    this.treinador.capturarBolla(bollaSorteada);
+                    System.out.println("Captura bem-sucedida com BollaBall Comum!");
+                } else {
+                    System.out.println("Captura falhou com BollaBall Comum.");
+                }
+                this.treinador.setBollaBallsComum(this.treinador.getBollaBallsComum() - 1);
 
-            //capturarBolla(bollaSorteada, new BollaBall(2));
-
-
+            }
         }
     }
 

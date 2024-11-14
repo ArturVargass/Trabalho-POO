@@ -11,6 +11,7 @@ public class Main {
             Treinador treinador = (Treinador) ois.readObject();
             System.out.println("Arquivo treinador.txt encontrado. Carregando dados do treinador...");
             System.out.println(treinador.getNome());
+            System.out.println();
             TelaMenu telaMenu = new TelaMenu(treinador);
             telaMenu.show();
 

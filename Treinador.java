@@ -7,13 +7,6 @@ import java.io.Serializable;
 public class Treinador implements Serializable{
     private String nome;
 
-    public void setBollaBallsRara(int bollaBallsRara) {
-        this.bollaBallsRara = bollaBallsRara;
-    }
-
-    public void setBollaBallsComum(int bollaBallsComum) {
-        this.bollaBallsComum = bollaBallsComum;
-    }
 
     public ArrayList<Bolla> getBollasPossuidas() {
         return bollasPossuidas;
@@ -38,12 +31,10 @@ public class Treinador implements Serializable{
     }
 
 
-    private void capturarBolla(Bolla b, BollaBall bb){
+    public void capturarBolla(Bolla b){
         //mostrar na interface a seleção das BollaBalls disponíveis para capturar o BollaBall
-        if(b.getNivel() >= bb.getNivel()){
-            //mostrar captura do bolla
-            bollasPossuidas.add(b);
-        }
+        bollasPossuidas.add(b);
+        System.out.println(bollasPossuidas);
     }
 
     public void salvarEmArquivo(String caminho) {
@@ -55,10 +46,6 @@ public class Treinador implements Serializable{
         }
     }
 
-    private ArrayList<Bolla> checarBollasPossuidas(){
-        return bollasPossuidas;
-    }
-
 
     public int getBollaBallsComum() {
         return bollaBallsComum;
@@ -66,6 +53,14 @@ public class Treinador implements Serializable{
 
     public int getBollaBallsRara() {
         return bollaBallsRara;
+    }
+
+    public void setBollaBallsComum(int bollaBallsComum) {
+        this.bollaBallsComum = bollaBallsComum;
+    }
+
+    public void setBollaBallsRara(int bollaBallsRara) {
+        this.bollaBallsRara = bollaBallsRara;
     }
 
     public String getNome() {
