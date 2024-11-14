@@ -6,7 +6,7 @@ public class Leptos extends Bolla implements Serializable {
     private String nome = "Leptos";
 
     public Leptos() {
-        super(1, 200, 30, "imagens/Leptos.png");
+        super(1, 200, 30, "imagens/Leptos.png", "Leptos");
     }
 
 

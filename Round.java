@@ -27,9 +27,6 @@ public class Round {
         float danoCausadoBolla = hpAntesInimigo - inimigo.getHp();
         float danoCausadoInimigo = hpAntesBolla - bolla.getHp();
 
-
-
-
         // Atualizar os labels com os danos causados
         ataqueBollaLabel.setText("<html>" + bolla.getNome() + " causou " + danoCausadoBolla + " de dano<br>HP: " + bolla.getHp() + "</html>");
         ataqueInimigoLabel.setText("<html>" + inimigo.getNome() + " causou " + danoCausadoInimigo + " de dano<br>HP: " + inimigo.getHp() + "</html>");

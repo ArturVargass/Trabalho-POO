@@ -89,28 +89,13 @@ public class MyFrame extends JFrame implements ActionListener {
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
+                TelaMenu telaMenu = new TelaMenu(treinador);
+                telaMenu.show();
                 this.dispose();
+
             }
         }
     }
 
-    public Treinador carregarTreinador(){
-
-        Treinador t = null;
-
-        SalveTreinador s = new SalveTreinador(t);
-
-        try {
-            t = s.carregarTreinador();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-
-
-
-        return t;
-    }
 
 }

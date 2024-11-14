@@ -12,7 +12,7 @@ public class Batalha {
     private float contHpBolla;
 
     public interface BatalhaListener {
-        void onBatalhaFinalizada(int resultado);
+        void onBatalhaFinalizada();
     }
 
     private BatalhaListener listener; // Ouvinte da batalha
@@ -31,7 +31,7 @@ public class Batalha {
         Round round = new Round(bolla, inimigo);
         AtomicInteger resultado = new AtomicInteger();
 
-        Timer timer = new Timer(3000, e -> {
+        Timer timer = new Timer(1500, e -> {
             round.realizarRound(l1, l2);
             resultado.set(round.finalizarBatalha());
 
@@ -47,6 +47,7 @@ public class Batalha {
                         Treinador tr = new SalveTreinador(null).carregarTreinador();
 
                         tr.setVitorias(tr.getVitorias() + 1);
+                        tr.setBollaBallsComum(tr.getBollaBallsComum() + 1);
                         SalveTreinador salveTreinador = new SalveTreinador(tr);
                         salveTreinador.salvarTreinador();
 
@@ -61,36 +62,27 @@ public class Batalha {
                     JOptionPane.showMessageDialog(null, "Você PERDEU a batalha.", "Muito ruim namoral", JOptionPane.WARNING_MESSAGE);
 
                     try {
-
                         Treinador tr = new SalveTreinador(null).carregarTreinador();
-
-                        System.out.println(tr.getBollasPossuidas().get(0));
-                        System.out.println(bolla);
-
-
                         tr.setDerrotas(tr.getDerrotas() + 1);
                         System.out.println("Antes da remoção: " + tr.getBollasPossuidas());
                         tr.removeBolla(bolla);
                         System.out.println("Depois da remoção: " + tr.getBollasPossuidas());
-
                         SalveTreinador salveTreinador = new SalveTreinador(tr);
                         salveTreinador.salvarTreinador();
-
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
                     } catch (ClassNotFoundException ex) {
                         throw new RuntimeException(ex);
                     }
-
                 }
+
+                if(listener != null){
+                    listener.onBatalhaFinalizada();
+                }
+
             }
         });
 
         timer.start();
-    }
-
-    public void setResultado(Treinador vencedor) {
-        int v = vencedor.getVitorias();
-        vencedor.setVitorias(v + 1);
     }
 }
