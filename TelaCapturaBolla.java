@@ -129,6 +129,7 @@ public class TelaCapturaBolla extends JFrame implements ActionListener {
             }
             this.dispose();
             TelaMenu telaMenu = new TelaMenu(treinador);
+            telaMenu.show();
         }
     }
 
