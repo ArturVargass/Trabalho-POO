@@ -4,7 +4,7 @@ import java.util.Random;
 public class Glaufora extends Bolla implements Serializable {
 
     public Glaufora() {
-        super(1, 200, 30, "imagens/Glaufora.png");
+        super(1, 200, 30, "imagens/Glaufora.png", "Glaufora");
     }
     private String nome = "Glaufora";
 

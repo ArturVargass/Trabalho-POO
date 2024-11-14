@@ -50,6 +50,8 @@ public class TelaMenu extends JFrame implements ActionListener {
                     "<br>Vitórias: " + treinador.getVitorias() +
                     "<br>BollaBalls Comuns: " + treinador.getBollaBallsComum() +
                     "<br>BollaBalls Raras: " + treinador.getBollaBallsRara() +
+                    "<br>Bollas: " + treinador.getBollasPossuidas().size() +
+                    "<br>Derrotas: " + treinador.getDerrotas() +
                     "</html>");
         } catch (FontFormatException | IOException e) {
             e.printStackTrace();

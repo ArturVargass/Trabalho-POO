@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.Objects;
 
 public abstract class Bolla implements Serializable {
 
@@ -11,11 +12,12 @@ public abstract class Bolla implements Serializable {
     private int nivel;
     private String imagePath;
 
-    public Bolla(int nivel, float hp, float poder, String imagePath){
+    public Bolla(int nivel, float hp, float poder, String imagePath, String nome){
         this.nivel = nivel;
         this.hp = hp;
         this.poder = poder;
         this.imagePath = imagePath;
+        this.nome = nome;
     }
 
     public abstract void atacarBasico(Bolla b);
@@ -45,5 +47,19 @@ public abstract class Bolla implements Serializable {
     public String getNome() {
         return nome;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Bolla bolla = (Bolla) obj;
+        return nome.equals(bolla.nome); // ou outra propriedade que identifique a Bolla
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome); // ou outra propriedade que identifique a Bolla
+    }
+
 }
 

@@ -6,7 +6,7 @@ public class Lavadon extends Bolla implements Serializable {
     private String nome = "Lavadon";
 
     public Lavadon() {
-        super(1, 200, 30, "imagens/Lavadon.png");
+        super(1, 200, 30, "imagens/Lavadon.png", "Lavadon");
     }
 
 

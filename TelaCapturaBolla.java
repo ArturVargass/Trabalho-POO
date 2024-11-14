@@ -20,7 +20,6 @@ public class TelaCapturaBolla extends JFrame implements ActionListener {
 
         this.treinador = treinador;
 
-
         this.setTitle("Dragon Bolla");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(600, 800);
@@ -33,6 +32,7 @@ public class TelaCapturaBolla extends JFrame implements ActionListener {
 
         //numero de bollaRaras
         System.out.println(treinador.getBollaBallsRara());
+
 
 
         ImageIcon bollaImg = new ImageIcon(getClass().getResource(bollaSorteada.getImagePath()));

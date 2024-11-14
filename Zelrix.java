@@ -5,8 +5,10 @@ import java.util.Random;
 
 
         public Zelrix() {
-            super(1, 200, 30, "imagens/Zelrix.png");
+            super(1, 200, 30, "imagens/Zelrix.png", "Zelrix");
         }
+
+        private String nome = "Zelrix";
 
 
         @Override
@@ -67,5 +69,9 @@ import java.util.Random;
         }
 
 
+        @Override
+        public String getNome() {
+            return nome;
+        }
     }
 

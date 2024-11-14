@@ -70,7 +70,7 @@ public class ProcurandoBolla extends JFrame {
     private void contagem() {
         Random r = new Random();
         AtomicReference<Bolla> b = new AtomicReference<>();
-        List<Bolla> bollas = Arrays.asList(new Datna(), new Glaufora(), new Lavadon(), new Varuk());
+        List<Bolla> bollas = Arrays.asList(new Datna(), new Glaufora(), new Lavadon(), new Varuk(), new Zelrix());
         int numero = (r.nextInt(8) + 3) * 1000;
         Timer timer = new Timer(numero, e -> {
             b.set(bollas.get(r.nextInt(bollas.size())));

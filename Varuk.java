@@ -4,7 +4,7 @@ import java.util.Random;
 public class Varuk extends Bolla implements Serializable {
 
     public Varuk() {
-        super(1, 200, 30, "imagens/Varuk.png");
+        super(1, 200, 30, "imagens/Varuk.png", "Varuk");
     }
     private String nome = "Varuk";
 

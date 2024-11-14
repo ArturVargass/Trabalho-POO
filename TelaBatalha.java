@@ -15,6 +15,7 @@ public class TelaBatalha extends JFrame implements ActionListener {
     JLabel ataqueBolla;
     JLabel ataqueInimigo;
     public TelaBatalha(Treinador treinador, Bolla bollaSelecionada) {
+
         this.setTitle("Dragon Bolla");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(600, 800);
@@ -29,6 +30,7 @@ public class TelaBatalha extends JFrame implements ActionListener {
         ImageIcon bollaAdversariaImg;
         ImageIcon bollaSelecionadaImg = new ImageIcon(getClass().getResource(bollaSelecionada.getImagePath()));
         InputStream fontStream = getClass().getResourceAsStream("/Minecraftia.ttf");
+
         if (fontStream == null) {
             try {
                 throw new IOException("Fonte não encontrada");
@@ -36,8 +38,11 @@ public class TelaBatalha extends JFrame implements ActionListener {
                 throw new RuntimeException(e);
             }
         }
+
         Font minecraftiaFont = null;
+
         try {
+
             minecraftiaFont = Font.createFont(Font.TRUETYPE_FONT, fontStream).deriveFont(13f);
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             ge.registerFont(minecraftiaFont);
@@ -63,6 +68,7 @@ public class TelaBatalha extends JFrame implements ActionListener {
             bollaSelecionadaLabel.setVerticalTextPosition(JLabel.BOTTOM);
 
             ArrayList<Bolla> bollaList = new ArrayList<>();
+
             bollaList.add(new Smilex());
 
             Random random = new Random();

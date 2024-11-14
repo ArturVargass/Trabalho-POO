@@ -5,7 +5,7 @@ public class Bill extends Bolla implements Serializable {
 
 
     public Bill() {
-        super(1, 200, 30, "imagens/Bill.png");
+        super(1, 200, 30, "imagens/Bill.png", "Bill");
     }
     private String nome = "Bill";
 
@@ -67,4 +67,8 @@ public class Bill extends Bolla implements Serializable {
     }
 
 
+    @Override
+    public String getNome() {
+        return nome;
+    }
 }

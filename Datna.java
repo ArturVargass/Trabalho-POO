@@ -5,10 +5,9 @@ public class Datna extends Bolla implements Serializable {
 
 
     public Datna() {
-        super(1, 180, 30, "imagens/Datna.png");
+        super(1, 200, 30, "imagens/Datna.png", "Datna");
     }
     private String nome = "Datna";
-
 
     @Override
     public void atacarBasico(Bolla b) {

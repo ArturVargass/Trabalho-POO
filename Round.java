@@ -31,8 +31,8 @@ public class Round {
 
 
         // Atualizar os labels com os danos causados
-        ataqueBollaLabel.setText(bolla.getNome() + " causou " + danoCausadoBolla + " de dano");
-        ataqueInimigoLabel.setText(inimigo.getNome() + " causou " + danoCausadoInimigo + " de dano");
+        ataqueBollaLabel.setText("<html>" + bolla.getNome() + " causou " + danoCausadoBolla + " de dano<br>HP: " + bolla.getHp() + "</html>");
+        ataqueInimigoLabel.setText("<html>" + inimigo.getNome() + " causou " + danoCausadoInimigo + " de dano<br>HP: " + inimigo.getHp() + "</html>");
 
         System.out.println("Round " + contador + "-------------------------");
         System.out.println("Bolla HP: " + bolla.getHp());

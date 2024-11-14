@@ -43,6 +43,10 @@ public class Treinador implements Serializable{
         return bollasPossuidas;
     }
 
+    public void removeBolla(Bolla b){
+        this.bollasPossuidas.remove(b);
+    }
+
     public void setBollasPossuidas(ArrayList<Bolla> bollasPossuidas) {
         this.bollasPossuidas = bollasPossuidas;
     }
