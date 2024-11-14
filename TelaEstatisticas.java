@@ -28,13 +28,13 @@ public class TelaEstatisticas extends JFrame implements ActionListener {
 
         ImageIcon botaoVoltarImg = new ImageIcon(getClass().getResource("/imagens/seta-volta.png"));
 
-
         try (InputStream fontStream = getClass().getResourceAsStream("/Minecraftia.ttf")) {
             if (fontStream == null) {
                 throw new IOException("Fonte não encontrada");
             }
-            Font minecraftiaFont = Font.createFont(Font.TRUETYPE_FONT, fontStream).deriveFont(31f);
-
+            Font minecraftiaFont = Font.createFont(Font.TRUETYPE_FONT, fontStream).deriveFont(27f);
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(minecraftiaFont);
             // Configuração do label com a fonte customizada
             labelStats.setBounds(70, 105, 400, 510);
             labelStats.setFont(minecraftiaFont);
@@ -44,6 +44,7 @@ public class TelaEstatisticas extends JFrame implements ActionListener {
                     "<br><br>Derrotas: " + treinador.getDerrotas() +
                     "<br><br>BollaBalls Comuns: " + treinador.getBollaBallsComum() +
                     "<br><br>BollaBalls Raras: " + treinador.getBollaBallsRara() +
+                    "<br><br>Bollas: " + treinador.getBollasPossuidas().size() +
                     "</html>");
         } catch (FontFormatException | IOException e) {
             e.printStackTrace();

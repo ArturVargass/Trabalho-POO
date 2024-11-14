@@ -110,7 +110,7 @@ public class TelaCapturaBolla extends JFrame implements ActionListener {
         } else if (e.getSource() == bollaBallComum) {
             if (this.treinador.getBollaBallsComum() >= 1) {
                 // 50% de chance de capturar
-                if (random.nextDouble() <= 0.5) {
+                if (random.nextDouble() <= 0.65) {
                     this.treinador.capturarBolla(bollaSorteada);
                     JOptionPane.showMessageDialog(null, "Captura bem-sucedida com BollaBall Comum!", "Resultado da Captura", JOptionPane.INFORMATION_MESSAGE);
                 } else {
