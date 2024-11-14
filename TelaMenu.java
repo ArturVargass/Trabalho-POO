@@ -99,6 +99,10 @@ public class TelaMenu extends JFrame implements ActionListener {
         }
 
 
+        if(treinador.getBollasPossuidas().size() == 0 && treinador.getBollaBallsComum() == 0 & treinador.getBollaBallsRara() == 0){
+            JOptionPane.showMessageDialog(null, "GAME OVER! VOCÊ FRACASSOU NA MISSÃO DE DERROTAR O BILLS!", "WASTED", JOptionPane.WARNING_MESSAGE);
+        }
+
     }
 
     @Override
