@@ -31,6 +31,7 @@ public class TelaMenu extends JFrame implements ActionListener {
         ImageIcon botaoBatalhaImg = new ImageIcon(getClass().getResource("/imagens/BotaoBatalha.png"));
         ImageIcon botaoEstatisticasImg = new ImageIcon(getClass().getResource("/imagens/BotaoEstatisticas.png"));
 
+
         botaoBatalhar.setBounds(275, 620, 147, 147);
         botaoBatalhar.setIcon(botaoBatalhaImg);
         botaoBatalhar.setFocusable(false);
@@ -53,6 +54,18 @@ public class TelaMenu extends JFrame implements ActionListener {
         botaoProcuraBolla.setFont(new Font("Roboto Mono", Font.PLAIN, 16));
         botaoProcuraBolla.setBackground(Color.LIGHT_GRAY);
         botaoProcuraBolla.addActionListener(this);
+
+        if (this.treinador.getVitorias() >= 0){
+            JButton botaoBoss = new JButton();
+            ImageIcon botaoBossImg = new ImageIcon(getClass().getResource("/imagens/botaoBill.png"));
+            botaoBoss.setBounds(0, 0, 256, 225);
+            botaoBoss.setIcon(botaoBossImg);
+            botaoBoss.setFocusable(false);
+            botaoBoss.setBackground(Color.LIGHT_GRAY);
+            botaoBoss.addActionListener(this);
+
+            backgroundPanel.add(botaoBoss);
+        }
 
         backgroundPanel.add(botaoEstatisticas);
         backgroundPanel.add(botaoBatalhar);

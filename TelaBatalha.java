@@ -62,7 +62,7 @@ public class TelaBatalha extends JFrame implements ActionListener {
             backgroundPanel.add(ataqueInimigo);
 
             JLabel bollaSelecionadaLabel = new JLabel();
-            bollaSelecionadaLabel.setIcon(new ImageIcon(invertImage(bollaSelecionadaImg.getImage()))); // Define imagem invertida
+            bollaSelecionadaLabel.setIcon(new ImageIcon(invertImage(bollaSelecionadaImg.getImage())));
             bollaSelecionadaLabel.setBounds(70, 401, 205, 225);
             bollaSelecionadaLabel.setHorizontalTextPosition(JLabel.CENTER);
             bollaSelecionadaLabel.setVerticalTextPosition(JLabel.BOTTOM);
