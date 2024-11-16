@@ -54,32 +54,17 @@ public class TelaMenu extends JFrame implements ActionListener {
         botaoProcuraBolla.setBackground(Color.LIGHT_GRAY);
         botaoProcuraBolla.addActionListener(this);
 
-        if (this.treinador.getVitorias() >= 3){
-            JButton botaoBoss = new JButton();
+        if (this.treinador.getVitorias() >= 3 && !this.treinador.isZerado()) {
+            botaoBoss = new JButton();
             ImageIcon botaoBossImg = new ImageIcon(getClass().getResource("/imagens/botaoBill.png"));
             botaoBoss.setBounds(0, 0, 256, 225);
             botaoBoss.setIcon(botaoBossImg);
             botaoBoss.setFocusable(false);
             botaoBoss.setBackground(Color.LIGHT_GRAY);
             botaoBoss.addActionListener(this);
-
             backgroundPanel.add(botaoBoss);
         }
 
-        if (this.treinador.getVitorias() >= 3){
-
-            if(!this.treinador.isZerado()){
-                botaoBoss = new JButton();
-                ImageIcon botaoBossImg = new ImageIcon(getClass().getResource("/imagens/botaoBill.png"));
-                botaoBoss.setBounds(0, 0, 256, 225);
-                botaoBoss.setIcon(botaoBossImg);
-                botaoBoss.setFocusable(false);
-                botaoBoss.setBackground(Color.LIGHT_GRAY);
-                botaoBoss.addActionListener(this);
-                backgroundPanel.add(botaoBoss);
-
-            }
-        }
 
         backgroundPanel.add(botaoEstatisticas);
         backgroundPanel.add(botaoBatalhar);
@@ -102,7 +87,7 @@ public class TelaMenu extends JFrame implements ActionListener {
 
 
         if(treinador.getBollasPossuidas().size() == 0 && treinador.getBollaBallsComum() == 0 & treinador.getBollaBallsRara() == 0){
-            JOptionPane.showMessageDialog(null, "GAME OVER! VOCÊ FRACASSOU NA MISSÃO DE DERROTAR O BILLS!", "WASTED", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "GAME OVER! VOCÊ FRACASSOU NA MISSÃO DE DERROTAR O BILL!", "WASTED", JOptionPane.WARNING_MESSAGE);
         }
 
     }
@@ -140,13 +125,14 @@ public class TelaMenu extends JFrame implements ActionListener {
 
                 //ABRIR TELA BATALHA
                 TelaEscolhaBolla telaEscolhaBolla = new TelaEscolhaBolla(this.treinador);
+
                 this.dispose();
             }
 
         }
 
         if (e.getSource() == botaoBoss) {
-
+            System.out.println("adsda");
             if(treinador.getBollasPossuidas().size() == 0) {
 
                 //CODIGO NENHUMA BOLLA POSSUIDO
